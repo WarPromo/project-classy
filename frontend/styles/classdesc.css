@@ -1,0 +1,71 @@
+
+#classdesccontainer{
+  width: 100%;
+  height: 100%;
+  position: fixed;;
+  top: 0px;
+  left: 0px;
+  backdrop-filter: blur(10px);
+  z-index: 2;
+}
+
+#classdescname{
+  font-size: 35px;
+  margin-bottom: 0px;
+  font-family: var(--font_family);
+  margin-top: 35px;
+  font-weight: bold;
+}
+
+#classreviews{
+  margin-top: 40px;
+}
+
+#classdesc{
+
+  width: 700px;
+  height: 800px;
+  background: var(--button_background);
+  border: solid 3px var(--button_border);
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 30px;
+  padding: 30px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+
+}
+
+#classdescdesc{
+  font-size: 17px;
+  font-family: var(--font_family);
+}
+
+
+
+.reviewcontainer{
+  margin-bottom: 25px;
+}
+
+.reviewtype{
+  font-family: var(--font_family);
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.reviewbarbackground{
+  width: 300px;
+  height: 20px;
+  background: gray;
+}
+
+.reviewbar{
+  height: 100%;
+  background: green;
+}

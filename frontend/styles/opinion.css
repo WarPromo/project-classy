@@ -1,0 +1,183 @@
+
+#opinioninput{
+  padding-bottom: 50px;
+}
+
+
+#opinioninput{
+  margin-top: 20px;
+}
+
+.inputtitle{
+
+  font-size: 25px;
+  font-family: var(--font_family);
+
+}
+
+#opinioninputcontent{
+  display: flex;
+  flex-direction: column;
+  width: 430px;
+}
+
+.setrating{
+  display: flex;
+  align-items: center;
+  width: 40%;
+  justify-content: space-between;
+}
+
+.setrating > p{
+  font-family: var(--font_family);
+}
+
+.ratingscale{
+  user-select: none;
+  display: flex;
+}
+
+.setrating{
+  opacity: 0.35;
+  transition: opacity 0.1s;
+}
+
+.setrating:hover{
+  opacity: 1;
+}
+
+.ratingselected{
+  opacity: 1 !important;
+}
+
+.ratingscalebutton{
+  all: unset;
+  width: 30px;
+  height: 30px;
+  margin: 0px;
+  background: blue;
+  transition: background 0.2s;
+  text-align: center;
+  font-family: var(--font_family);
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.ratingscalebutton:hover{
+
+  box-sizing: border-box;
+  border: solid 3px black;
+
+}
+
+#opinioninputmsg{
+  resize: none;
+}
+
+
+.ratingscalecancel > img{
+  width: 20px;
+  height: 20px;
+}
+
+.ratingscalecancel{
+  all: unset;
+  width: 20px;
+  height: 20px;
+  background: white;
+  text-align: center;
+  opacity: 0.4;
+}
+
+.ratingscalecancel:hover{
+  opacity: 0.8;
+}
+
+.ratingscalecancel:active{
+  opacity: 1;
+}
+
+#opinioninputauthor{
+  all: unset;
+  font-size: 20px;
+  font-family: var(--font_family);
+  padding: 10px;
+  background: rgba(0,0,0,0.05);
+  border: solid 2px rgba(0,0,0,0.1);
+  opacity: 0.6;
+  transition: all 0.3s;
+  margin-bottom: 10px;
+}
+
+#opinioninputauthor:hover{
+
+  opacity: 0.8
+
+}
+
+#opinioninputauthor:focus{
+  opacity: 1
+}
+
+
+#opinioninputmsg{
+  all: unset;
+  font-size: 20px;
+  font-family: var(--font_family);
+  padding: 10px;
+  background: rgba(0,0,0,0.05);
+  border: solid 2px rgba(0,0,0,0.1);
+  opacity: 0.6;
+  height: 100px;
+  transition: all 0.3s;
+}
+
+#opinioninputmsg:hover{
+
+  opacity: 0.8
+
+}
+
+#opinioninputmsg:focus{
+  opacity: 1
+}
+
+#opinionterminate{
+  display: flex;
+  align-items: center;
+}
+
+#opinionsubmit{
+  background: var(--button_border) !important;
+  position: relative;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  width: 70px;
+  justify-content: center;
+}
+
+
+#opinioncancel{
+  position: relative;
+  height: 30px;
+  margin-left: 10px;
+  width: 70px;
+  text-align: center;
+}
+
+#opinionsubmit > img{
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  left: 0px;
+  right: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+  transform: translateY(-50%)
+}
+
+.opinionuploading{
+  opacity: 1;
+}

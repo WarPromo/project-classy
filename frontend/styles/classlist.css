@@ -1,0 +1,90 @@
+
+.classcontainer{
+
+  all: unset;
+
+  width: 100%;
+  height: 200px;
+  background: var(--button_background);
+  margin: 10px;
+  opacity: 0.7;
+  border-radius: 10px;
+  position: relative;
+  border: solid 3px var(--button_border);
+  bottom: 0px;
+  transition: all 0.2s;
+  margin-left: auto;
+
+}
+
+.classcontainer:hover{
+  opacity: 0.8;
+  cursor: pointer;
+  bottom: 2px;
+}
+
+.classcontainer:active{
+  opacity: 1;
+}
+
+.classtagscontainer{
+  display: flex;
+  margin-left: 10px;
+}
+
+.classdescription{
+  margin-left: 20px;
+}
+
+.classtag{
+  font-family: var(--font_family);
+  margin: 5px;
+  padding: 5px;
+  background: gray;
+}
+
+#classes{
+  flex: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  width: 100%;
+  padding-right: 20px;
+}
+
+.classname{
+  font-size: 30px;
+  margin-left: 20px;
+  margin-top: 10px;
+  font-family: var(--font_family);
+  font-weight: bold;
+  color: black;
+}
+
+.classratingcontainer{
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+}
+
+.classratingcontainerinvalid{
+  opacity: 0.3;
+}
+
+.classrating{
+  margin-left: 20px;
+}
+
+.classreviewcontainer{
+  background: gray;
+  height: 20px;
+  width: 150px;
+  margin-left: 20px;
+}
+
+.classreviewinside{
+  background: green;
+  height: 100%;
+}

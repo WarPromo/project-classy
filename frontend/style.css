@@ -1,0 +1,6 @@
+:root{
+  --button_shadow: rgba(59, 130, 246, 0.7);
+  --button_border: rgba(59,130,246);
+  --button_background: rgba(245, 245, 245);
+  --font_family: "Arial";
+}

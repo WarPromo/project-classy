@@ -1,0 +1,23 @@
+.classybutton{
+  all: unset;
+  background: rgba(0,0,0,0.2);
+  opacity: 0.8;
+  padding: 14px;
+  font-size: 17px;
+  font-family: var(--font_family)
+}
+
+.classybutton:disabled{
+  opacity: 0.3 !important;
+}
+
+.classybutton:hover{
+
+  cursor: pointer;
+  opacity: 0.9;
+
+}
+
+.classybutton:active{
+  opacity: 1;
+}

@@ -1,0 +1,306 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Classy</title>
+
+  <script src="socket.io.js"></script>
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/classdesc.css">
+  <link rel="stylesheet" href="styles/classlist.css">
+  <link rel="stylesheet" href="styles/comment.css">
+  <link rel="stylesheet" href="styles/opinion.css">
+  <link rel="stylesheet" href="styles/button.css">
+  <link rel="stylesheet" href="styles/navbar.css">
+
+
+  <script src = "classdesc/classdesc.js"></script>
+  <script src = "classdesc/comment.js"></script>
+  <script src = "classdesc/opinion.js"></script>
+
+  <script src = "classlist.js"></script>
+
+  <script src = "script.js"></script>
+
+
+
+
+</head>
+
+<body onload="init()">
+
+
+  <div id="frontgui">
+
+    <div id = "leftnavbar">
+
+      <div id ="sorting" class="listoption">
+        <p class="filtertext">Sort by</p>
+
+        <div class="sortingoption">
+          <input type="radio" name="sorting" value="Overall" class="sortingbutton" onclick="changesorting(event)"></input>
+          <p class="sortingtag">Overall</p>
+        </div>
+
+        <div class="sortingoption">
+          <input type="radio" name="sorting" value="Homework" class="sortingbutton" onclick="changesorting(event)"></input>
+          <p class="sortingtag">Homework</p>
+        </div>
+
+        <div class="sortingoption">
+          <input type="radio" name="sorting" value="Comfort" class="sortingbutton" onclick="changesorting(event)"></input>
+          <p class="sortingtag">Comfort</p>
+        </div>
+
+        <div class="sortingoption">
+          <input type="radio" name="sorting" value="Difficulty" class="sortingbutton" onclick="changesorting(event)"></input>
+          <p class="sortingtag">Difficulty</p>
+        </div>
+      </div>
+
+      <div id="classtagsoption" class="listoption">
+
+        <p class="filtertext">Subjects</p>
+
+        <div class="tagoption sortingoption">
+
+          <input class = "tagbutton" type="checkbox" name="sorting" value="Math" onclick="classsettag(event, 'Math')" checked="true"></input>
+          <p class="tagoptiontext">Math</p>
+
+        </div>
+
+        <div class="tagoption sortingoption">
+
+          <input class = "tagbutton" type="checkbox" name="sorting" value="Science" onclick="classsettag(event, 'Science')"></input>
+          <p class="tagoptiontext">Science</p>
+
+        </div>
+
+        <div class="tagoption sortingoption">
+
+          <input class = "tagbutton" type="checkbox" name="sorting" value="Art" onclick="classsettag(event, 'Art')"></input>
+          <p class="tagoptiontext">Art</p>
+
+        </div>
+
+        <div class="tagoption sortingoption">
+
+          <input class = "tagbutton" type="checkbox" name="sorting" value="Technology" onclick="classsettag(event, 'Technology')"></input>
+          <p class="tagoptiontext">Technology</p>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div id ="classesgui">
+
+      <div id ="navbar">
+
+        <input id = "searchbar" placeholder="Search" oninput="searchclassinput(event)"></input>
+
+      </div>
+
+      <div id="classes">
+
+        <img src="loading.gif" id="classesloading"></img>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="classdesccontainer" style="display: none" onclick="hideclassdesc(event)">
+
+    <div id ="classdesc">
+
+      <p id="classdescname">AP Calc BC</p>
+      <p id="classdescdesc">All about dat smizzle dizzle</p>
+
+      <div id ="classreviews">
+      </div>
+
+      <div id ="commentsdesc">
+
+        <div id="commenttitlecontainer">
+          <p id="commenttitle">Student Opinions</p>
+        </div>
+
+        <div id="opinioninput" style="display: none">
+
+          <div id="opinioninputratings">
+
+            <p class="inputtitle">Rate the course*</p>
+
+            <div class="setrating">
+              <p class="opinionratingtype">Comfort</p>
+
+              <div class="ratingscale">
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+              </div>
+              <button class="ratingscalecancel">
+                <img src="x.png"></img>
+              </button>
+
+
+            </div>
+
+            <div class="setrating">
+              <p>Homework</p>
+              <div class="ratingscale">
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+              </div>
+              <button class="ratingscalecancel">
+                <img src="x.png"></img>
+              </button>
+            </div>
+
+            <div class="setrating">
+              <p>Difficulty</p>
+              <div class="ratingscale">
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+              </div>
+              <button class="ratingscalecancel">
+                <img src="x.png"></img>
+              </button>
+            </div>
+
+            <div class="setrating" id="apscorerating">
+              <p>AP Score</p>
+              <div class="ratingscale">
+                <button class="ratingscalebutton">1</button>
+                <button class="ratingscalebutton">2</button>
+                <button class="ratingscalebutton">3</button>
+                <button class="ratingscalebutton">4</button>
+                <button class="ratingscalebutton">5</button>
+              </div>
+              <button class="ratingscalecancel">
+                <img src="x.png"></img>
+              </button>
+            </div>
+
+          </div>
+
+          <div id="opinioninputcontents">
+
+            <p class="inputtitle">Write an opinion*</p>
+
+            <div id="opinioninputcontent">
+            <input id="opinioninputauthor" type="text" onblur="opinionauthorblur(event)" placeholder="Your name*"></input>
+            <textarea id="opinioninputmsg" onblur="opinioncommentblur(event)" placeholder="Your opinion*"></textarea>
+          </div>
+
+          </div>
+
+          <div id ="opiniondone">
+
+            <p class = "inputtitle">Finished?</p>
+
+            <div id ="opinionterminate">
+              <button onclick="submitopinion(this)" id="opinionsubmit" class="classybutton"><p>Done</p>
+                <img src="loading.gif" style="display:none"></img>
+
+              </button>
+              <button onclick="removeopinion()" id="opinioncancel" class="classybutton">Cancel</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div id = "usercomments">
+
+          <button id="addcomment" class="classybutton" onclick = "addopinion()">Add your opinion!</button>
+
+          <div id ="usercommentscontainer">
+            <div class="usercomment">
+
+              <div class="usercommentratings">
+
+                <div class="usercommentrating">
+
+                  <p class="userreviewtype">Comfort</p>
+
+                  <div class = "userreview">
+
+                    <div class = "userreviewbar">
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <div class="usercommentrating">
+
+                  <p class="userreviewtype">Difficulty</p>
+
+                  <div class = "userreview">
+
+                    <div class = "userreviewbar">
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="usercommentrating">
+
+                  <p class="userreviewtype">AP Score</p>
+                  <p class="userreviewapscore">4</p>
+
+                </div>
+
+
+
+              </div>
+
+              <div class="usercommentcontentcontainer">
+
+                <p class="usercommentcontent">hurp dur dapee boo bee poopafosdpsdofpsosdpfspofpsdpfpsf</p>
+                <p class="usercommentauthor"><em>By Joshua</em></p>
+
+
+              </div>
+
+            </div>
+
+
+          </div>
+          <div id="commentsloadingcontainer">
+            <img id = "commentsloading" src="loading.gif"></img>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+</body>
+</html>
