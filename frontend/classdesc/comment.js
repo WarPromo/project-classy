@@ -168,4 +168,4 @@ setInterval(() => {
     requestbatch();
   }
 
-}, 500)
+}, 100)

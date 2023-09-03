@@ -4,7 +4,6 @@
   all: unset;
 
   width: 100%;
-  height: 200px;
   background: var(--button_background);
   margin: 10px;
   opacity: 0.7;
@@ -15,16 +14,17 @@
   transition: all 0.2s;
   margin-left: auto;
 
+  padding-bottom: 20px;
+  padding-top: 20px;
+
 }
 
 .classcontainer:hover{
-  opacity: 0.8;
   cursor: pointer;
-  bottom: 2px;
 }
 
 .classcontainer:active{
-  opacity: 1;
+
 }
 
 .classtagscontainer{
@@ -34,6 +34,7 @@
 
 .classdescription{
   margin-left: 20px;
+  margin-right: 25px;
 }
 
 .classtag{
@@ -44,12 +45,12 @@
 }
 
 #classes{
-  flex: 1;
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: none;
   width: 100%;
   padding-right: 20px;
+  height: 800px;
 }
 
 .classname{

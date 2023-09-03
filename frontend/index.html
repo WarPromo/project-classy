@@ -45,24 +45,30 @@
         <p class="filtertext">Sort by</p>
 
         <div class="sortingoption">
-          <input type="radio" name="sorting" value="Overall" class="sortingbutton" onclick="changesorting(event)"></input>
+          <input type="radio" name="sorting" value="Overall" class="sortingbutton" onclick="changesorting(event)" checked="checked"></input>
           <p class="sortingtag">Overall</p>
         </div>
 
         <div class="sortingoption">
-          <input type="radio" name="sorting" value="Homework" class="sortingbutton" onclick="changesorting(event)"></input>
-          <p class="sortingtag">Homework</p>
-        </div>
-
-        <div class="sortingoption">
-          <input type="radio" name="sorting" value="Comfort" class="sortingbutton" onclick="changesorting(event)"></input>
-          <p class="sortingtag">Comfort</p>
+          <input type="radio" name="sorting" value="Enjoyment" class="sortingbutton" onclick="changesorting(event)"></input>
+          <p class="sortingtag">Enjoyment</p>
         </div>
 
         <div class="sortingoption">
           <input type="radio" name="sorting" value="Difficulty" class="sortingbutton" onclick="changesorting(event)"></input>
           <p class="sortingtag">Difficulty</p>
         </div>
+
+        <div class="sortingoption">
+          <input type="radio" name="sorting" value="Work" class="sortingbutton" onclick="changesorting(event)"></input>
+          <p class="sortingtag">Work</p>
+        </div>
+
+        <div class="sortingoption">
+          <input type="radio" name="sorting" value="Useful" class="sortingbutton" onclick="changesorting(event)"></input>
+          <p class="sortingtag">Useful</p>
+        </div>
+
       </div>
 
       <div id="classtagsoption" class="listoption">
@@ -71,29 +77,36 @@
 
         <div class="tagoption sortingoption">
 
-          <input class = "tagbutton" type="checkbox" name="sorting" value="Math" onclick="classsettag(event, 'Math')" checked="true"></input>
+          <input class = "tagbutton" type="checkbox" name="sorting" value="Math" onclick="classsettag(event)" checked="true"></input>
           <p class="tagoptiontext">Math</p>
 
         </div>
 
         <div class="tagoption sortingoption">
 
-          <input class = "tagbutton" type="checkbox" name="sorting" value="Science" onclick="classsettag(event, 'Science')"></input>
+          <input class = "tagbutton" type="checkbox" name="sorting" value="Science" onclick="classsettag(event)" checked="true"></input>
           <p class="tagoptiontext">Science</p>
 
         </div>
 
         <div class="tagoption sortingoption">
 
-          <input class = "tagbutton" type="checkbox" name="sorting" value="Art" onclick="classsettag(event, 'Art')"></input>
+          <input class = "tagbutton" type="checkbox" name="sorting" value="Art" onclick="classsettag(event)" checked="true"></input>
           <p class="tagoptiontext">Art</p>
 
         </div>
 
         <div class="tagoption sortingoption">
 
-          <input class = "tagbutton" type="checkbox" name="sorting" value="Technology" onclick="classsettag(event, 'Technology')"></input>
-          <p class="tagoptiontext">Technology</p>
+          <input class = "tagbutton" type="checkbox" name="sorting" value="Social-Science" onclick="classsettag(event)" checked="true"></input>
+          <p class="tagoptiontext">Social-Science</p>
+
+        </div>
+
+        <div class="tagoption sortingoption">
+
+          <input class = "tagbutton" type="checkbox" name="sorting" value="Language" onclick="classsettag(event)" checked="true"></input>
+          <p class="tagoptiontext">Language</p>
 
         </div>
 
@@ -124,8 +137,8 @@
 
     <div id ="classdesc">
 
-      <p id="classdescname">AP Calc BC</p>
-      <p id="classdescdesc">All about dat smizzle dizzle</p>
+      <p id="classdescname">Class name</p>
+      <p id="classdescdesc">Class description</p>
 
       <div id ="classreviews">
       </div>
@@ -143,24 +156,8 @@
             <p class="inputtitle">Rate the course*</p>
 
             <div class="setrating">
-              <p class="opinionratingtype">Comfort</p>
+              <p class="opinionratingtype">Enjoyment</p>
 
-              <div class="ratingscale">
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-              </div>
-              <button class="ratingscalecancel">
-                <img src="x.png"></img>
-              </button>
-
-
-            </div>
-
-            <div class="setrating">
-              <p>Homework</p>
               <div class="ratingscale">
                 <button class="ratingscalebutton"></button>
                 <button class="ratingscalebutton"></button>
@@ -175,6 +172,34 @@
 
             <div class="setrating">
               <p>Difficulty</p>
+              <div class="ratingscale">
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+              </div>
+              <button class="ratingscalecancel">
+                <img src="x.png"></img>
+              </button>
+            </div>
+
+            <div class="setrating">
+              <p>Work</p>
+              <div class="ratingscale">
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+                <button class="ratingscalebutton"></button>
+              </div>
+              <button class="ratingscalecancel">
+                <img src="x.png"></img>
+              </button>
+            </div>
+
+            <div class="setrating">
+              <p>Useful</p>
               <div class="ratingscale">
                 <button class="ratingscalebutton"></button>
                 <button class="ratingscalebutton"></button>
@@ -205,7 +230,7 @@
 
           <div id="opinioninputcontents">
 
-            <p class="inputtitle">Write an opinion*</p>
+            <p class="inputtitle">Write your opinion*</p>
 
             <div id="opinioninputcontent">
             <input id="opinioninputauthor" type="text" onblur="opinionauthorblur(event)" placeholder="Your name*"></input>
@@ -234,57 +259,7 @@
           <button id="addcomment" class="classybutton" onclick = "addopinion()">Add your opinion!</button>
 
           <div id ="usercommentscontainer">
-            <div class="usercomment">
 
-              <div class="usercommentratings">
-
-                <div class="usercommentrating">
-
-                  <p class="userreviewtype">Comfort</p>
-
-                  <div class = "userreview">
-
-                    <div class = "userreviewbar">
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                <div class="usercommentrating">
-
-                  <p class="userreviewtype">Difficulty</p>
-
-                  <div class = "userreview">
-
-                    <div class = "userreviewbar">
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="usercommentrating">
-
-                  <p class="userreviewtype">AP Score</p>
-                  <p class="userreviewapscore">4</p>
-
-                </div>
-
-
-
-              </div>
-
-              <div class="usercommentcontentcontainer">
-
-                <p class="usercommentcontent">hurp dur dapee boo bee poopafosdpsdofpsosdpfspofpsdpfpsf</p>
-                <p class="usercommentauthor"><em>By Joshua</em></p>
-
-
-              </div>
-
-            </div>
 
 
           </div>

@@ -50,16 +50,14 @@ body{
 #leftnavbar{
   background: var(--button_background);
   border: solid 3px var(--button_border);
-  height: 90vh;
-  width: 25%;
-  max-width: 250px;
+  height: 800px;
+  width: 250px;
 }
 
 #classesgui{
   display: flex;
   flex-direction: column;
   margin-left: 10px;
-  height: 95vh;
   width: 65%;
   max-width: 600px;
 }
@@ -73,15 +71,10 @@ body{
 }
 
 #classesloading{
-  position: absolute;
   width: 150px;
   height: 150px;
-  left: 0;
-  right: 0;
   margin-left: auto;
   margin-right: auto;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .sortingoption{

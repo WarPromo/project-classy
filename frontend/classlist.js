@@ -1,8 +1,7 @@
 
 
 let sortingmetric = "Overall";
-
-let ratings = ["Comfort", "Difficulty", "Homework"];
+let ratings = ["Overall", "Enjoyment", "Difficulty", "Work", "Useful"];
 
 function makeclassbutton(classy, sorting){
 
@@ -47,7 +46,7 @@ function makeclassbutton(classy, sorting){
 
   let classreview = document.createElement("div");
   classreview.classList.add("classreviewinside")
-  classreview.style.width = (classy.rating[sorting]*100 + 0.1) +"%";
+  classreview.style.width = (classy.rating[sorting]*100) +"%";
 
   classreviewcontainer.appendChild(classreview);
   ratingcontainer.appendChild(classreviewcontainer);
@@ -66,12 +65,6 @@ function makeclassbutton(classy, sorting){
   }
 
   classcontainer.appendChild(classtagscontainer);
-
-
-
-
-
-  //allclasses.appendChild(classcontainer);
 
   classcontainer.onclick = () => {
 
@@ -148,16 +141,19 @@ function makesortedlist(classlist){
     for(var i = 0; i < keys.length; i++){
 
       if(a.rating[keys[i]] > 0){
-        sum += a.rating[keys[i]];
         sumlength++;
       }
 
       if(b.rating[keys[i]] > 0){
-        sum2 += b.rating[keys[i]];
         sum2length++;
       }
 
     }
+
+    sum = a.rating["Enjoyment"];
+    if(a.rating["Difficulty"] > 0) sum += (1 - a.rating["Difficulty"])
+    if(a.rating["Work"] > 0) sum += (1 - a.rating["Work"])
+    sum += a.rating["Useful"]
 
     if(sum > 0){
       sum /= sumlength;
@@ -235,7 +231,7 @@ function initclasstags(){
 
 }
 
-function classsettag(event, tag){
+function classsettag(event){
 
   console.log(event.target.checked);
 

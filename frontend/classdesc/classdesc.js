@@ -1,6 +1,6 @@
 
 let currentclass = "";
-let ratingnames = ["Comfort", "Homework", "Difficulty", "APScore"];
+let ratingnames = ["Enjoyment", "Difficulty", "Work", "Useful", "APScore"];
 let lockedin = [];
 
 function reviewsection(revdata, classy){
