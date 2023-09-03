@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,8 +10,9 @@
 
   <script src="socket.io.js"></script>
 
-  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="./assets/classyLogo.png">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script src="https://kit.fontawesome.com/288d883b8d.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="styles/classdesc.css">
@@ -21,13 +23,13 @@
   <link rel="stylesheet" href="styles/navbar.css">
 
 
-  <script src = "classdesc/classdesc.js"></script>
-  <script src = "classdesc/comment.js"></script>
-  <script src = "classdesc/opinion.js"></script>
+  <script src="classdesc/classdesc.js"></script>
+  <script src="classdesc/comment.js"></script>
+  <script src="classdesc/opinion.js"></script>
 
-  <script src = "classlist.js"></script>
+  <script src="classlist.js"></script>
 
-  <script src = "script.js"></script>
+  <script src="script.js"></script>
 
 
 
@@ -39,111 +41,205 @@
 
   <div id="frontgui">
 
-    <div id = "leftnavbar">
+    <div id="navbar">
 
-      <div id ="sorting" class="listoption">
-        <p class="filtertext">Sort by</p>
-
-        <div class="sortingoption">
-          <input type="radio" name="sorting" value="Overall" class="sortingbutton" onclick="changesorting(event)" checked="checked"></input>
-          <p class="sortingtag">Overall</p>
-        </div>
-
-        <div class="sortingoption">
-          <input type="radio" name="sorting" value="Enjoyment" class="sortingbutton" onclick="changesorting(event)"></input>
-          <p class="sortingtag">Enjoyment</p>
-        </div>
-
-        <div class="sortingoption">
-          <input type="radio" name="sorting" value="Difficulty" class="sortingbutton" onclick="changesorting(event)"></input>
-          <p class="sortingtag">Difficulty</p>
-        </div>
-
-        <div class="sortingoption">
-          <input type="radio" name="sorting" value="Work" class="sortingbutton" onclick="changesorting(event)"></input>
-          <p class="sortingtag">Work</p>
-        </div>
-
-        <div class="sortingoption">
-          <input type="radio" name="sorting" value="Useful" class="sortingbutton" onclick="changesorting(event)"></input>
-          <p class="sortingtag">Useful</p>
-        </div>
+      <div id="navbar_main">
+        <h2 class="navbar_title">Classy</h2>
+        <img src="assets/classyLogoShort.png" class="navbar_logo" />
 
       </div>
 
-      <div id="classtagsoption" class="listoption">
-
-        <p class="filtertext">Subjects</p>
-
-        <div class="tagoption sortingoption">
-
-          <input class = "tagbutton" type="checkbox" name="sorting" value="Math" onclick="classsettag(event)" checked="true"></input>
-          <p class="tagoptiontext">Math</p>
-
+      <div id="searchbar" oninput="searchclassinput(event)">
+        <div class="search-box shadow-md">
+          <input class="search-input" type="text" autocomplete="off" required minlength="0" placeholder="Search...">
+          <button class="search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+          </button>
         </div>
-
-        <div class="tagoption sortingoption">
-
-          <input class = "tagbutton" type="checkbox" name="sorting" value="Science" onclick="classsettag(event)" checked="true"></input>
-          <p class="tagoptiontext">Science</p>
-
-        </div>
-
-        <div class="tagoption sortingoption">
-
-          <input class = "tagbutton" type="checkbox" name="sorting" value="Art" onclick="classsettag(event)" checked="true"></input>
-          <p class="tagoptiontext">Art</p>
-
-        </div>
-
-        <div class="tagoption sortingoption">
-
-          <input class = "tagbutton" type="checkbox" name="sorting" value="Social-Science" onclick="classsettag(event)" checked="true"></input>
-          <p class="tagoptiontext">Social-Science</p>
-
-        </div>
-
-        <div class="tagoption sortingoption">
-
-          <input class = "tagbutton" type="checkbox" name="sorting" value="Language" onclick="classsettag(event)" checked="true"></input>
-          <p class="tagoptiontext">Language</p>
-
-        </div>
-
       </div>
-
-
     </div>
 
-    <div id ="classesgui">
 
-      <div id ="navbar">
+    <div id="subgui">
 
-        <input id = "searchbar" placeholder="Search" oninput="searchclassinput(event)"></input>
+      <div id="leftnavbar" class="shadow-g">
+
+        <div class="sortinggui">
+          <div id="sorting" class="listoption">
+            <p class="filtertext">Sort by</p>
+
+            <div class="classoptions sbar">
+              <div class="checkbox">
+                <label class="checkbox-wrapper">
+                  <input type="radio" name="sorting" value="Overall" class="checkbox-input sortingbutton"
+                    onclick="changesorting(event)" checked="checked"></input>
+
+                  <span class="checkbox-tile shadow-md">
+                    <span class="checkbox-icon">
+                      <i class="fa-solid fa-compass fa-lg"></i>
+                    </span>
+                    <span class="checkbox-label">Overall</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label class="checkbox-wrapper">
+                  <input type="radio" name="sorting" value="Enjoyment" class="checkbox-input sortingbutton"
+                    onclick="changesorting(event)"></input>
+
+                  <span class="checkbox-tile shadow-md">
+                    <span class="checkbox-icon">
+                      <i class="fa-solid fa-face-smile fa-lg"></i>
+                    </span>
+                    <span class="checkbox-label">Enjoyment</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label class="checkbox-wrapper">
+                  <input type="radio" name="sorting" value="Difficulty" class="checkbox-input sortingbutton"
+                    onclick="changesorting(event)"></input>
+
+                  <span class="checkbox-tile shadow-md">
+                    <span class="checkbox-icon">
+                      <i class="fa-solid fa-triangle-exclamation fa-lg"></i>
+                    </span>
+                    <span class="checkbox-label">Difficulty</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label class="checkbox-wrapper">
+                  <input type="radio" name="sorting" value="Work" class="checkbox-input sortingbutton"
+                    onclick="changesorting(event)"></input>
+
+                  <span class="checkbox-tile shadow-md">
+                    <span class="checkbox-icon">
+                      <i class="fa-solid fa-laptop-file fa-lg"></i>
+                    </span>
+                    <span class="checkbox-label">Work</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label class="checkbox-wrapper">
+                  <input type="radio" name="sorting" value="Useful" class="checkbox-input sortingbutton"
+                    onclick="changesorting(event)"></input>
+
+                  <span class="checkbox-tile shadow-md">
+                    <span class="checkbox-icon">
+                      <i class="fa-solid fa-square-check fa-lg"></i>
+                    </span>
+                    <span class="checkbox-label">Useful</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="classtagsoption" class="listoption">
+
+            <p class="filtertext">Subjects</p>
+
+            <div class="classoptions cbar">
+              <div class="checkbox">
+                <label class="checkbox-wrapper">
+                  <input class="checkbox-input tagbutton" type="checkbox" name="sorting" value="Math"
+                    onclick="classsettag(event)" checked="true"></input>
+                  <span class="checkbox-tile shadow-md">
+                    <span class="checkbox-icon">
+                      <i class="fa-solid fa-calculator fa-lg"></i>
+                    </span>
+                    <span class="checkbox-label">Math</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label class="checkbox-wrapper">
+                  <input class="checkbox-input tagbutton" type="checkbox" name="sorting" value="Science"
+                    onclick="classsettag(event)" checked="true"></input>
+                  <span class="checkbox-tile shadow-md">
+                    <span class="checkbox-icon">
+                      <i class="fa-solid fa-flask fa-lg"></i>
+                    </span>
+                    <span class="checkbox-label">Science</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label class="checkbox-wrapper">
+                  <input class="checkbox-input tagbutton" type="checkbox" name="sorting" value="Art"
+                    onclick="classsettag(event)" checked="true"></input>
+                  <span class="checkbox-tile shadow-md">
+                    <span class="checkbox-icon">
+                      <i class="fa-solid fa-brush fa-lg"></i>
+                    </span>
+                    <span class="checkbox-label">Art</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label class="checkbox-wrapper">
+                  <input class="checkbox-input tagbutton" type="checkbox" name="sorting" value="Social-Science"
+                    onclick="classsettag(event)" checked="true"></input>
+                  <span class="checkbox-tile shadow-md">
+                    <span class="checkbox-icon">
+                      <i class="fa-solid fa-landmark-dome fa-lg"></i>
+                    </span>
+                    <span class="checkbox-label">Social Science</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label class="checkbox-wrapper">
+                  <input class="checkbox-input tagbutton" type="checkbox" name="sorting" value="Language"
+                    onclick="classsettag(event)" checked="true"></input>
+                  <span class="checkbox-tile shadow-md">
+                    <span class="checkbox-icon">
+                      <i class="fa-solid fa-earth-americas fa-lg"></i>
+                    </span>
+                    <span class="checkbox-label">Language</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
 
       </div>
 
-      <div id="classes">
+      <div id="classesgui">
+        <div id="classes">
 
-        <img src="loading.gif" id="classesloading"></img>
+          <img src="./assets/loading.gif" id="classesloading"></img>
 
+        </div>
       </div>
-
     </div>
 
   </div>
 
   <div id="classdesccontainer" style="display: none" onclick="hideclassdesc(event)">
 
-    <div id ="classdesc">
+    <div id="classdesc">
 
       <p id="classdescname">Class name</p>
       <p id="classdescdesc">Class description</p>
 
-      <div id ="classreviews">
+      <div id="classreviews">
       </div>
 
-      <div id ="commentsdesc">
+      <div id="commentsdesc">
 
         <div id="commenttitlecontainer">
           <p id="commenttitle">Student Opinions</p>
@@ -166,7 +262,7 @@
                 <button class="ratingscalebutton"></button>
               </div>
               <button class="ratingscalecancel">
-                <img src="x.png"></img>
+                <img src="assets/x.png"></img>
               </button>
             </div>
 
@@ -180,7 +276,7 @@
                 <button class="ratingscalebutton"></button>
               </div>
               <button class="ratingscalecancel">
-                <img src="x.png"></img>
+                <img src="assets/x.png"></img>
               </button>
             </div>
 
@@ -194,7 +290,7 @@
                 <button class="ratingscalebutton"></button>
               </div>
               <button class="ratingscalecancel">
-                <img src="x.png"></img>
+                <img src="assets/x.png"></img>
               </button>
             </div>
 
@@ -208,7 +304,7 @@
                 <button class="ratingscalebutton"></button>
               </div>
               <button class="ratingscalecancel">
-                <img src="x.png"></img>
+                <img src="assets/x.png"></img>
               </button>
             </div>
 
@@ -222,7 +318,7 @@
                 <button class="ratingscalebutton">5</button>
               </div>
               <button class="ratingscalecancel">
-                <img src="x.png"></img>
+                <img src="assets/x.png"></img>
               </button>
             </div>
 
@@ -233,18 +329,20 @@
             <p class="inputtitle">Write your opinion*</p>
 
             <div id="opinioninputcontent">
-            <input id="opinioninputauthor" type="text" onblur="opinionauthorblur(event)" placeholder="Your name*"></input>
-            <textarea id="opinioninputmsg" onblur="opinioncommentblur(event)" placeholder="Your opinion*"></textarea>
-          </div>
+              <input id="opinioninputauthor" type="text" onblur="opinionauthorblur(event)"
+                placeholder="Your name*"></input>
+              <textarea id="opinioninputmsg" onblur="opinioncommentblur(event)" placeholder="Your opinion*"></textarea>
+            </div>
 
           </div>
 
-          <div id ="opiniondone">
+          <div id="opiniondone">
 
-            <p class = "inputtitle">Finished?</p>
+            <p class="inputtitle">Finished?</p>
 
-            <div id ="opinionterminate">
-              <button onclick="submitopinion(this)" id="opinionsubmit" class="classybutton"><p>Done</p>
+            <div id="opinionterminate">
+              <button onclick="submitopinion(this)" id="opinionsubmit" class="classybutton">
+                <p>Done</p>
                 <img src="loading.gif" style="display:none"></img>
 
               </button>
@@ -254,17 +352,17 @@
 
         </div>
 
-        <div id = "usercomments">
+        <div id="usercomments">
 
-          <button id="addcomment" class="classybutton" onclick = "addopinion()">Add your opinion!</button>
+          <button id="addcomment" class="classybutton" onclick="addopinion()">Add your opinion!</button>
 
-          <div id ="usercommentscontainer">
+          <div id="usercommentscontainer">
 
 
 
           </div>
           <div id="commentsloadingcontainer">
-            <img id = "commentsloading" src="loading.gif"></img>
+            <img id="commentsloading" src="loading.gif"></img>
           </div>
         </div>
 
@@ -278,4 +376,5 @@
 
 
 </body>
+
 </html>
