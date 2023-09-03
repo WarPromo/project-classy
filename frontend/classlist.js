@@ -36,7 +36,7 @@ function makeclassbutton(classy, sorting){
   }
 
   let ranktext = document.createElement("p");
-  ranktext.innerHTML = rank + " " + sorting;
+  ranktext.innerHTML = sorting// rank + " " + sorting;
   ranktext.classList.add("classrating");
 
   ratingcontainer.appendChild(ranktext);
@@ -129,46 +129,32 @@ function makesortedlist(classlist){
 
   let keys = ratings;
 
-  metrics["Overall"] = [...classlist];
-  metrics["Overall"].sort((a,b) => {
+  for(var i = 0; i < classlist.length; i++){
 
     let sum = 0;
     let sumlength = 0;
+    let classy = classlist[i];
 
-    let sum2 = 0;
-    let sum2length = 0;
+    for(var j = 0; j < keys.length; j++){
 
-    for(var i = 0; i < keys.length; i++){
+      if(keys[j] != "Overall"){
 
-      if(a.rating[keys[i]] > 0){
-        sumlength++;
-      }
+        if(classy.rating[keys[j]] > 0) sumlength++;
 
-      if(b.rating[keys[i]] > 0){
-        sum2length++;
       }
 
     }
 
-    sum = a.rating["Enjoyment"];
-    if(a.rating["Difficulty"] > 0) sum += (1 - a.rating["Difficulty"])
-    if(a.rating["Work"] > 0) sum += (1 - a.rating["Work"])
-    sum += a.rating["Useful"]
+    sum = classy.rating["Enjoyment"];
+    if(classy.rating["Difficulty"] > 0) sum += (1 - classy.rating["Difficulty"])
+    if(classy.rating["Work"] > 0) sum += (1 - classy.rating["Work"])
+    sum += classy.rating["Useful"]
 
-    if(sum > 0){
-      sum /= sumlength;
-    }
-    a.rating["Overall"] = sum
+    classy.rating["Overall"] = 0;
 
-    if(sum2 > 0){
-      sum2 /= sum2length;
-    }
-    b.rating["Overall"] = sum2
+    if(sum > 0) classy.rating["Overall"] = sum / sumlength;
 
-
-    return -sum + sum2;
-
-  })
+  }
 
   for(var i = 0; i < keys.length; i++){
 

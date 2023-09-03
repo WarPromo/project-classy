@@ -18,7 +18,7 @@ function reviewsection(revdata, classy){
 
   let type = document.createElement("p");
 
-  type.innerHTML = ranking + " " + revdata.type;
+  type.innerHTML = ranking + " in " + revdata.type;
 
   type.classList.add("reviewtype");
 
