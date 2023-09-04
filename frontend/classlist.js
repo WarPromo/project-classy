@@ -91,7 +91,7 @@ function makeclassbutton(classy, sorting) {
   for (var i = 0; i < classy.tags.length; i++) {
 
     let classtag = document.createElement("p");
-    classtag.classList.add("classtag", "shadow-md");
+    classtag.classList.add("classtag", "shadow-sm");
     classtag.classList.add(classy.tags[i].toLowerCase())
     classtag.innerHTML = classy.tags[i];
     classtag.setAttribute("value", classy.tags[i]);

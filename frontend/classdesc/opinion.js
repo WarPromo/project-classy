@@ -99,9 +99,6 @@ function clickagreement(event){
 }
 
 function checkblank(){
-
-  let submitbutton = document.getElementById("")
-
   let inp1 = document.getElementById("opinioninputauthor");
   let inp2 = document.getElementById("opinioninputmsg");
 

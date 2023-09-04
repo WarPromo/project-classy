@@ -65,7 +65,7 @@
               <div class="radiobox">
                 <label class="checkbox-wrapper">
                   <input type="radio" name="sorting" value="Overall" class="radio-input sortingbutton"
-                    onclick="changesorting(event)" ></input>
+                    onclick="changesorting(event)" checked="checked" ></input>
 
                   <span class="radio-tile shadow-md">
                     <span class="checkbox-icon">
@@ -257,9 +257,10 @@
           <div id ="opinionagreement">
 
             <p class="inputtitle" id="agreementbox">Agrement</p>
+            
 
             <div id="agreementcontainer" onclick="clickagreement(event)">
-              <input type="checkbox" id="agreementcheckbox" onclick="checkblank()"></inpu>
+              <input type="checkbox" id="agreementcheckbox" onclick="checkblank()"></input>
               <label id="agreementtext">My review will be accurate and mature.</label>
             </div>
 
@@ -281,15 +282,17 @@
                   <button class="ratingscalebutton"></button>
                   <button class="ratingscalebutton"></button>
                 </div>
+
+                
               </div>
 
-              <button class="ratingscalecancel">
+              <button class="ratingscalecancel ">
                 <img src="assets/x.png"></img>
               </button>
             </div>
 
             <div class="setrating">
-              <p>Difficulty</p>
+              <p class="opinionratingtype">Difficulty</p>
 
               <div class="ratingscalecontainer">
                 <p class="ratinglabel"></p>
@@ -308,7 +311,7 @@
             </div>
 
             <div class="setrating">
-              <p>Workload</p>
+              <p class="opinionratingtype">Workload</p>
 
               <div class="ratingscalecontainer">
                 <p class="ratinglabel"></p>
@@ -327,7 +330,7 @@
             </div>
 
             <div class="setrating">
-              <p>Usefulness</p>
+              <p class="opinionratingtype">Usefulness</p>
 
               <div class="ratingscalecontainer">
                 <p class="ratinglabel"></p>
@@ -346,16 +349,16 @@
             </div>
 
             <div class="setrating" id="apscorerating">
-              <p>AP Score</p>
+              <p class="opinionratingtype">AP Score</p>
 
               <div class="ratingscalecontainer">
                 <p class="ratinglabel"></p>
                 <div class="ratingscale">
-                  <button class="ratingscalebutton">1</button>
-                  <button class="ratingscalebutton">2</button>
-                  <button class="ratingscalebutton">3</button>
-                  <button class="ratingscalebutton">4</button>
-                  <button class="ratingscalebutton">5</button>
+                  <button class="ratingscalebutton apnum">1</button>
+                  <button class="ratingscalebutton apnum">2</button>
+                  <button class="ratingscalebutton apnum">3</button>
+                  <button class="ratingscalebutton apnum">4</button>
+                  <button class="ratingscalebutton apnum">5</button>
                 </div>
               </div>
 

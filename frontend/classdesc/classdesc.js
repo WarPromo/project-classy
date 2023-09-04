@@ -3,15 +3,15 @@ let currentclass = "";
 let ratingnames = ["Enjoyment", "Difficulty", "Workload", "Usefulness", "APScore"];
 let lockedin = [];
 
-function reviewsection(revdata, classy){
+function reviewsection(revdata, classy) {
 
 
   let container = document.createElement("div");
   container.classList.add("reviewcontainer");
 
-  let ranking = "<b>#" + (metrics[revdata.type].indexOf(classy) + 1) +"</b>";
+  let ranking = "<b>#" + (metrics[revdata.type].indexOf(classy) + 1) + "</b>";
 
-  if(revdata.rating == 0){
+  if (revdata.rating == 0) {
     ranking = "N/A"
     container.classList.add("classratingcontainerinvalid")
   }
@@ -40,10 +40,10 @@ function reviewsection(revdata, classy){
 
   let value = null;
 
-  for(var i = 0; i < reviewrange.length; i++){
-    if(revdata.rating <= reviewrange[i]){
+  for (var i = 0; i < reviewrange.length; i++) {
+    if (revdata.rating <= reviewrange[i]) {
       value = i;
-      if(revdata.type == "Difficulty" || revdata.type == "Workload") value = 4 - i;
+      if (revdata.type == "Difficulty" || revdata.type == "Workload") value = 4 - i;
 
       reviewbar.setAttribute("value", value);
       break;
@@ -54,19 +54,19 @@ function reviewsection(revdata, classy){
 
 
   setTimeout(() => {
-    reviewbar.style.width = (revdata.rating * 100) + "%";
+    reviewbar.style.width = ((revdata.rating) * 100) + "%";
   }, 1)
 
 
   reviewbarcontainer.appendChild(reviewbar);
   container.appendChild(reviewbarcontainer);
 
-  if(revdata.type != "Overall" && ranking != "N/A"){
-      let label = document.createElement("p");
-      label.classList.add("reviewlabel");
-      let labelText = opiniontypes[ratingnames.indexOf(revdata.type)][i];
-      label.innerHTML = '"' + labelText + '"';
-      container.appendChild(label);
+  if (revdata.type != "Overall" && ranking != "N/A") {
+    let label = document.createElement("p");
+    label.classList.add("reviewlabel");
+    let labelText = opiniontypes[ratingnames.indexOf(revdata.type)][i];
+    label.innerHTML = '"' + labelText + '"';
+    container.appendChild(label);
   }
 
   return container;
@@ -76,7 +76,7 @@ function reviewsection(revdata, classy){
 
 }
 
-function showclassdesc(){
+function showclassdesc() {
 
   reqindex = null;
 
@@ -86,21 +86,31 @@ function showclassdesc(){
   let commentsloadingcontainer = document.getElementById("commentsloadingcontainer");
   commentsloadingcontainer.style.display = "";
 
-  //document.body.scrolling = 'no';
+  classdesccontainer.classList.add("fastFadeIn")
+  setTimeout(() => {
+    classdesccontainer.classList.remove("fastFadeIn")
+    classdesccontainer.style.display = "";
+  }, 500)
+
+  document.body.classList.add("noscroll");
 
 }
 
-function hideclassdesc(event, bypass=false){
+function hideclassdesc(event, bypass = false) {
 
   let classdesccontainer = document.getElementById("classdesccontainer");
 
-  if(!bypass && event.target != classdesccontainer) return;
+  if (!bypass && event.target != classdesccontainer) return;
 
   classopen = null;
 
-  classdesccontainer.style.display = "none";
+  classdesccontainer.classList.add("fadeOut")
+  setTimeout(() => {
+    classdesccontainer.classList.remove("fadeOut")
+    classdesccontainer.style.display = "none";
+  }, 500)
 
-  //document.body.scrolling = 'yes';
+  document.body.classList.remove("noscroll");
 
   removeopinion()
 }

@@ -1,62 +1,67 @@
-
-#opinioninput{
+#opinioninput {
   padding-bottom: 50px;
 }
 
 
-#opinioninput{
+#opinioninput {
   margin-top: 20px;
 }
 
-.inputtitle{
+.inputtitle {
 
   font-size: 25px;
   font-family: var(--font_family);
 
 }
 
-#opinionfailed{
+#opinionfailed {
   color: red;
   font-family: var(--font_family);
   font-size: 20px;
   transition: opacity 1s;
 }
 
-#opinioninputcontent{
+#opinioninputcontent {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 550px;
 }
 
-.setrating{
+.setrating {
   display: flex;
   align-items: center;
-  width: 280px;
+  width: 300px;
   justify-content: space-between;
   height: 65px;
   opacity: 0.35;
   transition: opacity 0.1s;
 }
 
-.setrating > p{
+.setrating>p {
   font-family: var(--font_family);
 }
 
-.ratingscale{
+.ratingscale {
   user-select: none;
   display: flex;
+  border-radius: 9999px;
 }
 
-.setrating:hover{
+.setrating:hover {
   opacity: 1;
 }
 
-.ratingselected{
+.ratingselected {
   opacity: 1 !important;
 }
 
-.ratingscalebutton{
+.opinionratingtype {
+  font-size: 17px;
+  width: 35%;
+}
+
+.ratingscalebutton {
   all: unset;
   width: 30px;
   height: 30px;
@@ -64,55 +69,64 @@
   background: blue;
   text-align: center;
   font-family: var(--font_family);
+
   font-weight: bold;
   font-size: 20px;
 }
 
-.ratingscalebutton[value="-1"]{
+.ratingscalebutton:nth-child(1) {
+  border-radius: 9999px 0px 0px 9999px;
+}
+
+.ratingscalebutton:nth-child(5) {
+  border-radius: 0px 9999px 9999px 0px;
+}
+
+.ratingscalebutton[value="-1"] {
   background: var(--review_-1);
 }
 
-.ratingscalebutton[value="-2"]{
+.ratingscalebutton[value="-2"] {
   background: var(--review_-2);
 }
 
-.ratingscalebutton[value="-3"]{
+.ratingscalebutton[value="-3"] {
   background: var(--review_-3);
 }
 
-.ratingscalebutton[value="-4"]{
+.ratingscalebutton[value="-4"] {
   background: var(--review_-4);
 }
 
-.ratingscalebutton[value="-5"]{
+.ratingscalebutton[value="-5"] {
   background: var(--review_-5);
 }
 
-.ratingscalebutton[value="0"]{
+.ratingscalebutton[value="0"] {
   background: var(--review_0);
 }
 
-.ratingscalebutton[value="1"]{
+.ratingscalebutton[value="1"] {
   background: var(--review_1);
 }
 
-.ratingscalebutton[value="2"]{
+.ratingscalebutton[value="2"] {
   background: var(--review_2);
 }
 
-.ratingscalebutton[value="3"]{
+.ratingscalebutton[value="3"] {
   background: var(--review_3);
 }
 
-.ratingscalebutton[value="4"]{
+.ratingscalebutton[value="4"] {
   background: var(--review_4);
 }
 
-.ratingscalecontainer{
+.ratingscalecontainer {
   position: relative;
 }
 
-.ratinglabel{
+.ratinglabel {
   position: absolute;
   font-family: var(--font_family);
   left: 50%;
@@ -122,107 +136,123 @@
   text-align: center;
 }
 
-#agreementcontainer{
+#agreementcontainer {
   cursor: pointer;
+
+}
+
+#agreementcontainer:hover {
 }
 
 
-#agreementtext{
+#agreementtext {
   font-family: var(--font_family);
   cursor: pointer;
 }
 
-#agreementcheckbox{
+#agreementcheckbox {
   cursor: pointer;
 }
 
-.ratingscalebutton:hover{
+.ratingscalebutton {
 
   box-sizing: border-box;
-  border: solid 3px black;
+  border: solid 2px transparent;
 
 }
 
-#opinioninputmsg{
+.ratingscalebutton:hover {
+
+  box-sizing: border-box;
+  border: solid 2px black;
+
+}
+
+#opinioninputmsg {
   resize: none;
 }
 
 
-.ratingscalecancel > img{
+.ratingscalecancel>img {
   width: 20px;
   height: 20px;
 }
 
-.ratingscalecancel{
+.ratingscalecancel {
   all: unset;
   width: 20px;
   height: 20px;
   background: white;
   text-align: center;
   opacity: 0.4;
+  position: inherit;
 }
 
-.ratingscalecancel:hover{
+.ratingscalecancel:hover {
   opacity: 0.8;
 }
 
-.ratingscalecancel:active{
+.ratingscalecancel:active {
   opacity: 1;
 }
 
-#opinioninputauthor{
+#opinioninputauthor {
   all: unset;
-  font-size: 20px;
+  font-size: 17px;
   font-family: var(--font_family);
   padding: 10px;
-  background: rgba(0,0,0,0.05);
-  border: solid 2px rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.05);
+  border: solid 2px rgba(0, 0, 0, 0.1);
   opacity: 0.6;
   transition: all 0.3s;
   margin-bottom: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-#opinioninputauthor:hover{
-
-  opacity: 0.8
-
+#opinioninputauthor:hover {
+  opacity: 0.8;
+  border: 2px solid var(--button_border);
 }
 
-#opinioninputauthor:focus{
+#opinioninputauthor:focus {
+  border: 2px solid var(--button_border);
   opacity: 1
 }
 
 
-#opinioninputmsg{
+#opinioninputmsg {
   all: unset;
-  font-size: 20px;
+  font-size: 17px;
   font-family: var(--font_family);
   padding: 10px;
-  background: rgba(0,0,0,0.05);
-  border: solid 2px rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.05);
+  border: solid 2px rgba(0, 0, 0, 0.1);
   opacity: 0.6;
   transition: all 0.3s;
   word-break: word;
   word-wrap: break-word;
   height: 200px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
-#opinioninputmsg:hover{
-
+#opinioninputmsg:hover {
+  border: 2px solid var(--button_border);
   opacity: 0.8
-
 }
 
-#opinioninputmsg:focus{
+#opinioninputmsg:focus {
+  border: 2px solid var(--button_border);
   opacity: 1
 }
 
-#opinionterminate{
+#opinionterminate {
   display: flex;
   align-items: center;
 }
 
-#opinionsubmit{
+#opinionsubmit {
   background: var(--button_border) !important;
   position: relative;
   height: 30px;
@@ -234,7 +264,7 @@
 }
 
 
-#opinioncancel{
+#opinioncancel {
   position: relative;
   height: 30px;
   margin-left: 10px;
@@ -242,7 +272,7 @@
   text-align: center;
 }
 
-#opinionsubmit > img{
+#opinionsubmit>img {
   position: absolute;
   height: 20px;
   width: 20px;
@@ -254,6 +284,14 @@
   transform: translateY(-50%)
 }
 
-.opinionuploading{
+.opinionuploading {
   opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.apnum {
+  font-weight: 300;
 }
