@@ -1,7 +1,7 @@
 
 
 let sortingmetric = "Overall";
-let ratings = ["Overall", "Enjoyment", "Difficulty", "Work", "Useful"];
+let ratings = ["Overall", "Enjoyment", "Difficulty", "Workload", "Usefulness"];
 let reviewrange = [0.2, 0.4, 0.6, 0.8, 1]
 
 function makeclassbutton(classy, sorting) {
@@ -59,7 +59,7 @@ function makeclassbutton(classy, sorting) {
   for (var i = 0; i < reviewrange.length; i++) {
     if (classy.rating[sorting] <= reviewrange[i]) {
       let value = i;
-      if (sorting == "Difficulty" || sorting == "Work") value = 4 - i;
+      if (sorting == "Difficulty" || sorting == "Workload") value = 4 - i;
       classreview.setAttribute("value", value);
       break;
     }
@@ -175,8 +175,8 @@ function makesortedlist(classlist) {
 
     sum = a.rating["Enjoyment"];
     if (a.rating["Difficulty"] > 0) sum += (1 - a.rating["Difficulty"])
-    if (a.rating["Work"] > 0) sum += (1 - a.rating["Work"])
-    sum += a.rating["Useful"]
+    if (a.rating["Workload"] > 0) sum += (1 - a.rating["Workload"])
+    sum += a.rating["Usefulness"]
 
     if (sum > 0) {
       sum /= sumlength;

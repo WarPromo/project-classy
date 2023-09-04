@@ -1,6 +1,6 @@
 
 let currentclass = "";
-let ratingnames = ["Enjoyment", "Difficulty", "Work", "Useful", "APScore"];
+let ratingnames = ["Enjoyment", "Difficulty", "Workload", "Usefulness", "APScore"];
 let lockedin = [];
 
 function reviewsection(revdata, classy){
@@ -44,7 +44,7 @@ function reviewsection(revdata, classy){
   for(var i = 0; i < reviewrange.length; i++){
     if(revdata.rating <= reviewrange[i]){
       let value = i;
-      if(sorting == "Difficulty" || sorting == "Work") value = 4 - i;
+      if(sorting == "Difficulty" || sorting == "Workload") value = 4 - i;
       reviewbar.setAttribute("value", i);
       break;
     }

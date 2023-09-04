@@ -59,6 +59,26 @@ function opinioncommentblur(event){
 }
 
 
+let ratetitle = `Rate the course<span style="color:red">*</span>`
+let ratetitlecomplete = `Rate the course`;
+
+let writeopinion = `Write your opinion<span style="color:red">*</span>`
+let writeopinioncomplete = `Write your opinion`
+
+let agreement = `Agreement<span style="color:red">*</span>`
+let agreementcomplete = `Agreement`
+
+function clickagreement(event){
+
+
+
+  let agreementinp = document.getElementById("agreementcheckbox");
+
+  if(event.target == agreementinp) return;
+
+  agreementinp.click();
+
+}
 
 function checkblank(){
 
@@ -67,8 +87,15 @@ function checkblank(){
   let inp1 = document.getElementById("opinioninputauthor");
   let inp2 = document.getElementById("opinioninputmsg");
 
+  let agreementinp = document.getElementById("agreementcheckbox");
+
+  let blank0 = agreementinp.checked;
+
+  console.log(agreementinp);
+
   let blank1 = inp1.value.split(' ').join('').length > 0
-  let blank2 = inp2.value.split(' ').join('').length > 1
+  let blank2 = inp2.value.split(' ').join('').length > 0
+
 
   let blank3 = false;
 
@@ -76,7 +103,20 @@ function checkblank(){
     if(lockedin[i] != false) blank3 = true;
   }
 
-  if(!(blank1 && blank2 && blank3)){
+  let agreementelem = document.getElementById("agreementbox");
+  agreementelem.innerHTML = agreement;
+  if(blank0) agreementelem.innerHTML = agreementcomplete;
+
+  let writeelem = document.getElementById("writeopinion");
+  writeelem.innerHTML = writeopinion
+  if(blank1 && blank2) writeelem.innerHTML = writeopinioncomplete
+
+  let rateelem = document.getElementById("ratecourse");
+  rateelem.innerHTML = ratetitle
+  if(blank3) rateelem.innerHTML = ratetitlecomplete
+
+
+  if(!(blank0 && blank1 && blank2 && blank3)){
 
     document.getElementById("opinionsubmit").disabled = true;
 
@@ -140,9 +180,9 @@ function setratingscales(){
         if(lockedin[numi] != false) return;
 
         for(var a = 0; a < buttons.length; a++){
-          let value = a;
+          let value = num;
 
-          if(name == "Difficulty" || name == "Work") value = buttons.length - a - 1;
+          if(name == "Difficulty" || name == "Workload") value = buttons.length - num - 1;
 
           if(a > num) value = -a - 1;
 
@@ -157,9 +197,9 @@ function setratingscales(){
         lockedin[numi] = 0.2 + num / buttons.length;
 
         for(var a = 0; a < buttons.length; a++){
-          let value = a;
+          let value = num;
 
-          if(name == "Difficulty" || name == "Work") value = buttons.length - a - 1;
+          if(name == "Difficulty" || name == "Workload") value = buttons.length - num - 1;
 
           if(a > num) value = -a - 1;
 

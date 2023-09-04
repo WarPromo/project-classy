@@ -29,8 +29,8 @@ for(var i = 0; i < file.length; i++){
     rating: {
       Enjoyment: 0,
       Difficulty: 0,
-      Work: 0,
-      Useful: 0
+      Workload: 0,
+      Usefulness: 0
     },
     tags: classtags
 

@@ -11,6 +11,12 @@
   --review_2: rgb(255, 129, 83);
   --review_3: rgb(245, 225, 113);
   --review_4: rgb(84, 194, 84);
+  --review_-1: rgb(40,40,40);
+  --review_-2: rgb(55,55,55);
+  --review_-3: rgb(70,70,70);
+  --review_-4: rgb(85,85,85);
+  --review_-5: rgb(100,100,100);
+
 }
 
 body {

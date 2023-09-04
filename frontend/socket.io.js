@@ -2623,7 +2623,7 @@
 
   function reconstructPacket(packet, buffers) {
     packet.data = _reconstructPacket(packet.data, buffers);
-    packet.attachments = undefined; // no longer useful
+    packet.attachments = undefined; // no longer Usefulness
 
     return packet;
   }

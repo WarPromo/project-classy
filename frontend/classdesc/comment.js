@@ -2,8 +2,26 @@ function commentsection(commentdata, prepend = false){
 
   let usercommentcontainer = document.getElementById("usercommentscontainer");
 
+  let contentcontainer = document.createElement("div");
+  contentcontainer.classList.add("usercommentcontentcontainer")
+
   let commentcontainer = document.createElement("div")
   commentcontainer.classList.add("usercomment");
+
+  let author = document.createElement("div");
+  author.classList.add("usercommentauthor");
+  author.innerHTML = "By " + commentdata.author;
+
+  contentcontainer.appendChild(author);
+
+
+  let content = document.createElement("div");
+  content.classList.add("usercommentcontent");
+  content.innerHTML = commentdata.content;
+
+  contentcontainer.appendChild(content);
+
+  commentcontainer.appendChild(contentcontainer);
 
   let ratingscontainer = document.createElement("div");
   ratingscontainer.classList.add("usercommentratings");
@@ -12,12 +30,20 @@ function commentsection(commentdata, prepend = false){
 
   let keys = Object.keys(ratings);
 
+  let first = true;
+
   for(var i = 0; i < keys.length; i++){
 
     if(keys[i] == "APScore") continue;
 
     let ratingcontainer = document.createElement("div");
     ratingcontainer.classList.add("usercommentrating");
+
+    if(first){
+      ratingcontainer.classList.add("firstusercommentrating");
+      first = false;
+    }
+
 
     let ratingtype = document.createElement("p");
     ratingtype.classList.add("userreviewtype");
@@ -35,7 +61,7 @@ function commentsection(commentdata, prepend = false){
     for(var j = 0; j < reviewrange.length; j++){
       if(ratings[keys[i]] <= reviewrange[j]){
         let value = j;
-        if(keys[i] == "Difficulty" || keys[i] == "Work") value = 4 - j;
+        if(keys[i] == "Difficulty" || keys[i] == "Workload") value = 4 - j;
         review.setAttribute("value", value);
         break;
       }
@@ -70,22 +96,6 @@ function commentsection(commentdata, prepend = false){
   }
 
   commentcontainer.appendChild(ratingscontainer);
-
-  let contentcontainer = document.createElement("div");
-  contentcontainer.classList.add("usercommentcontentcontainer")
-
-  let content = document.createElement("div");
-  content.classList.add("usercommentcontent");
-  content.innerHTML = commentdata.content;
-
-  contentcontainer.appendChild(content);
-
-  let author = document.createElement("div");
-  author.classList.add("usercommentauthor");
-  author.innerHTML = "By " + commentdata.author;
-
-  contentcontainer.appendChild(author);
-  commentcontainer.appendChild(contentcontainer);
 
   if(!prepend){
     usercommentcontainer.appendChild(commentcontainer);

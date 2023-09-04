@@ -18,7 +18,8 @@
 #opinioninputcontent{
   display: flex;
   flex-direction: column;
-  width: 430px;
+  width: 100%;
+  max-width: 550px;
 }
 
 .setrating{
@@ -63,23 +64,23 @@
 }
 
 .ratingscalebutton[value="-1"]{
-  background: rgb(40,40,40);
+  background: var(--review_-1);
 }
 
 .ratingscalebutton[value="-2"]{
-  background: rgb(55,55,55);
+  background: var(--review_-2);
 }
 
 .ratingscalebutton[value="-3"]{
-  background: rgb(70,70,70);
+  background: var(--review_-3);
 }
 
 .ratingscalebutton[value="-4"]{
-  background: rgb(85,85,85);
+  background: var(--review_-4);
 }
 
 .ratingscalebutton[value="-5"]{
-  background: rgb(100,100,100);
+  background: var(--review_-5);
 }
 
 .ratingscalebutton[value="0"]{
@@ -100,6 +101,20 @@
 
 .ratingscalebutton[value="4"]{
   background: var(--review_4);
+}
+
+#agreementcontainer{
+  cursor: pointer;
+}
+
+
+#agreementtext{
+  font-family: var(--font_family);
+  cursor: pointer;
+}
+
+#agreementcheckbox{
+  cursor: pointer;
 }
 
 .ratingscalebutton:hover{
@@ -167,8 +182,10 @@
   background: rgba(0,0,0,0.05);
   border: solid 2px rgba(0,0,0,0.1);
   opacity: 0.6;
-  height: 100px;
   transition: all 0.3s;
+  word-break: word;
+  word-wrap: break-word;
+  height: 200px;
 }
 
 #opinioninputmsg:hover{
@@ -194,6 +211,7 @@
   align-items: center;
   width: 70px;
   justify-content: center;
+  color: white;
 }
 
 

@@ -105,28 +105,28 @@
 
               <div class="checkbox">
                 <label class="checkbox-wrapper">
-                  <input type="radio" name="sorting" value="Work" class="checkbox-input sortingbutton"
+                  <input type="radio" name="sorting" value="Workload" class="checkbox-input sortingbutton"
                     onclick="changesorting(event)"></input>
 
                   <span class="checkbox-tile shadow-md">
                     <span class="checkbox-icon">
                       <i class="fa-solid fa-laptop-file fa-lg"></i>
                     </span>
-                    <span class="checkbox-label">Work</span>
+                    <span class="checkbox-label">Workload</span>
                   </span>
                 </label>
               </div>
 
               <div class="checkbox">
                 <label class="checkbox-wrapper">
-                  <input type="radio" name="sorting" value="Useful" class="checkbox-input sortingbutton"
+                  <input type="radio" name="sorting" value="Usefulness" class="checkbox-input sortingbutton"
                     onclick="changesorting(event)"></input>
 
                   <span class="checkbox-tile shadow-md">
                     <span class="checkbox-icon">
                       <i class="fa-solid fa-square-check fa-lg"></i>
                     </span>
-                    <span class="checkbox-label">Useful</span>
+                    <span class="checkbox-label">Usefulness</span>
                   </span>
                 </label>
               </div>
@@ -226,7 +226,7 @@
 
 
         </div>
-        <img src="./assets/loading.gif" id="classesloading"></img>
+        <img src="./assets/loading.gif" class="loadinggif" id="classesloading"></img>
       </div>
     </div>
 
@@ -251,9 +251,22 @@
 
         <div id="opinioninput" style="display: none">
 
+
+
+          <div id ="opinionagreement">
+
+            <p class="inputtitle" id="agreementbox">Agrement</p>
+
+            <div id="agreementcontainer" onclick="clickagreement(event)">
+              <input type="checkbox" id="agreementcheckbox" onclick="checkblank()"></inpu>
+              <label id="agreementtext">My review will be accurate and mature.</label>
+            </div>
+
+          </div>
+
           <div id="opinioninputratings">
 
-            <p class="inputtitle">Rate the course*</p>
+            <p class="inputtitle" id="ratecourse">Rate the course*</p>
 
             <div class="setrating">
               <p class="opinionratingtype">Enjoyment</p>
@@ -285,7 +298,7 @@
             </div>
 
             <div class="setrating">
-              <p>Work</p>
+              <p>Workload</p>
               <div class="ratingscale">
                 <button class="ratingscalebutton"></button>
                 <button class="ratingscalebutton"></button>
@@ -299,7 +312,7 @@
             </div>
 
             <div class="setrating">
-              <p>Useful</p>
+              <p>Usefulness</p>
               <div class="ratingscale">
                 <button class="ratingscalebutton"></button>
                 <button class="ratingscalebutton"></button>
@@ -330,12 +343,12 @@
 
           <div id="opinioninputcontents">
 
-            <p class="inputtitle">Write your opinion*</p>
+            <p class="inputtitle" id="writeopinion">Write your opinion*</p>
 
             <div id="opinioninputcontent">
               <input id="opinioninputauthor" type="text" onblur="opinionauthorblur(event)"
-                placeholder="Your name*"></input>
-              <textarea id="opinioninputmsg" onblur="opinioncommentblur(event)" placeholder="Your opinion*"></textarea>
+                placeholder="Your name" maxlength="32"></input>
+              <textarea id="opinioninputmsg" oninput = "checkblank()" onblur="opinioncommentblur(event)" placeholder="Your opinion" maxlength="1000"></textarea>
             </div>
 
           </div>
@@ -347,7 +360,7 @@
             <div id="opinionterminate">
               <button onclick="submitopinion(this)" id="opinionsubmit" class="classybutton">
                 <p>Done</p>
-                <img src="loading.gif" style="display:none"></img>
+                <img src="./assets/loading.gif" class="loadinggif" style="display:none"></img>
 
               </button>
               <button onclick="removeopinion()" id="opinioncancel" class="classybutton">Cancel</button>
@@ -366,7 +379,7 @@
 
           </div>
           <div id="commentsloadingcontainer">
-            <img id="commentsloading" src="loading.gif"></img>
+            <img id="commentsloading" class="loadinggif" src="./assets/loading.gif"></img>
           </div>
         </div>
 
