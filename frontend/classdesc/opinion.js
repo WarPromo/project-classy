@@ -314,6 +314,8 @@ function clearopinion(){
 
 }
 
+let opinionFadeNum = 0;
+
 function submitopinion(me){
 
   if(opinionuploading) return;
@@ -367,9 +369,12 @@ function submitopinion(me){
 
         let failedupload = document.getElementById("opinionfailed");
         failedupload.style.opacity = 1;
+        opinionFadeNum++;
+        let num = opinionFadeNum;
+
 
         setTimeout(() => {
-          failedupload.style.opacity = 0;
+          if(num == opinionFadeNum) failedupload.style.opacity = 0;
         }, 5000);
 
       }

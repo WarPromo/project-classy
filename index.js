@@ -1,11 +1,16 @@
-const io = require("socket.io")(3000, {
+
+import { Server } from 'socket.io'
+
+const io = new Server(3000, {
   cors:{
     origin: "*"//["http://localhost:8080"],
   }
 });
 
-const fs = require("fs");
+import * as fs from 'fs'
 
+import { ProfanityEngine } from '@coffeeandfun/google-profanity-words';
+const profanity = new ProfanityEngine({ language: 'en' });
 
 let classlist = JSON.parse(fs.readFileSync("./storage/classlist.json", "utf8"));
 let classcomments = JSON.parse(fs.readFileSync("./storage/classcomments.json", "utf8"));
@@ -13,7 +18,10 @@ let classcomments = JSON.parse(fs.readFileSync("./storage/classcomments.json", "
 let ratings = ["Enjoyment", "Difficulty", "Workload", "Usefulness", "APScore"]
 
 let ratelimitTime = 60000;
+let ratelimitBadtime = 600000;
+
 let ratelimits = new Set();
+let ratelimitsBad = new Set();
 
 
 computeScores();
@@ -62,11 +70,11 @@ function computeScores(){
 
 
 io.on("connection", socket => {
-  console.log(socket.id);
+  console.log("Connection: " + socket.id);
 
   socket.on("getclasses", () =>{
 
-    console.log("Send classes", classlist);
+    //console.log("Send classes", classlist);
 
     setTimeout(() => {
         socket.emit("classes", classlist);
@@ -97,13 +105,13 @@ io.on("connection", socket => {
 
     let size = classcomments[classid].length;
 
-    console.log("SEND LENGTH", size);
+    //console.log("SEND LENGTH", size);
 
     socket.emit("commentslength", classid, size)
 
   })
 
-  socket.on("opinion", (classid, comment) => {
+  socket.on("opinion", async (classid, comment) => {
 
 
     comment.date = new Date().getTime();
@@ -112,11 +120,26 @@ io.on("connection", socket => {
 
     console.log(comment, classid);
 
-    let valid = validComment(comment);
+    let valid = await validComment(comment);
 
-    if(!valid){
-      console.log("INVALID COMMENT!");
-      socket.emit("opinionuploaded", "failed")
+    if(typeof valid != "boolean"){
+      if(valid == "Failed") console.log("INVALID COMMENT!", comment.ip);
+      socket.emit("opinionuploaded", {error: valid})
+
+      if(valid.includes("Profanity")){
+
+        console.log("PROFANITY");
+
+        ratelimitsBad.add(comment.ip);
+
+        setTimeout(() => {
+
+          ratelimitsBad.delete(comment.ip)
+
+        }, ratelimitBadtime)
+
+      }
+
       return;
     }
 
@@ -125,7 +148,7 @@ io.on("connection", socket => {
     ratelimits.add(comment.ip);
 
     setTimeout( () => {
-      console.log("SENT");
+      //console.log("SENT");
       socket.emit("opinionuploaded", comment)
     }, 500);
 
@@ -155,20 +178,20 @@ function stripComment(comment){
 
 }
 
-function validComment(comment){
+async function validComment(comment){
 
   let validKeys = ["author", "content", "date", "rating", "ip"]
 
 
   let objKeys = Object.keys(comment);
 
-  if(ratelimits.has(comment.ip)) return false;
-
+  if(ratelimits.has(comment.ip)) return "Please wait at least a minute before posting another comment";
+  if(ratelimitsBad.has(comment.ip)) return "You are not allowed to post comments for 10 minutes due to vulgar language."
 
   for(var i = 0; i < objKeys.length; i++){
 
     if(validKeys.indexOf(objKeys[i]) == -1){
-      return false;
+      return "Failed";
     }
 
   }
@@ -178,24 +201,29 @@ function validComment(comment){
   for(var i = 0; i < keys.length; i++){
 
     if(typeof comment.rating[keys[i]] != "number"){
-      return false;
+      return "Failed";
     }
 
     if(comment.rating[keys[i]] < 0 || comment.rating[keys[i]] > 1){
-      return false;
+      return "Failed";
     }
 
     if(ratings.indexOf(keys[i]) == -1){
-      return false;
+      return "Failed";
     }
 
   }
 
-  if(typeof comment.author != "string") return false;
-  if(comment.author.length > 32 || comment.author.length == 0) return false;
+  if(typeof comment.author != "string") return "Failed";
+  if(comment.author.length > 32 || comment.author.length == 0) return "Failed";
+  let profaneAuthor = await profanity.hasCurseWords(comment.author);
+  if(profaneAuthor) return "Profanity detected, you have been banned for 10 minutes."
 
-  if(typeof comment.content != "string") return false;
-  if(comment.content.length > 1000 || comment.content.length == 0) return false;
+  if(typeof comment.content != "string") return "Failed";
+  if(comment.content.length > 1000 || comment.content.length == 0) return "Failed";
+  let profaneContent = await profanity.hasCurseWords(comment.content);
+  if(profaneContent) return "Profanity detected, you have been banned for 10 minutes."
+
 
   return true;
 

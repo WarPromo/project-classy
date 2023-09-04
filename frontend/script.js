@@ -18,8 +18,9 @@ socket.on("classes", (classlist) => {
 socket.on("opinionuploaded", (comment) => {
 
 
-  if(comment == "failed"){
+  if("error" in comment){
     opinionuploaded = "failed";
+    document.getElementById("opinionfailed").textContent = comment.error;
   }
   else{
     opinionuploaded = true;
