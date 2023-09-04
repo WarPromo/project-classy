@@ -1,7 +1,5 @@
 const fs = require("fs");
-
-
-let file = fs.readFileSync("descs.txt", "utf8");
+let file = fs.readFileSync("./storage/descs.txt", "utf8");
 
 
 file = file.split("\r\n\r\n");
@@ -41,5 +39,5 @@ for(var i = 0; i < file.length; i++){
 
 }
 
-fs.writeFileSync("classlist.json", JSON.stringify(classes))
-fs.writeFileSync("classcomments.json", JSON.stringify(classcomments))
+fs.writeFileSync("./storage/classlist.json", JSON.stringify(classes))
+fs.writeFileSync("./storage/classcomments.json", JSON.stringify(classcomments))

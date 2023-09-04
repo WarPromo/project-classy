@@ -271,13 +271,17 @@
             <div class="setrating">
               <p class="opinionratingtype">Enjoyment</p>
 
-              <div class="ratingscale">
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
+              <div class="ratingscalecontainer">
+                <p class="ratinglabel"></p>
+                <div class="ratingscale">
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                </div>
               </div>
+
               <button class="ratingscalecancel">
                 <img src="assets/x.png"></img>
               </button>
@@ -285,13 +289,18 @@
 
             <div class="setrating">
               <p>Difficulty</p>
-              <div class="ratingscale">
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
+
+              <div class="ratingscalecontainer">
+                <p class="ratinglabel"></p>
+                <div class="ratingscale">
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                </div>
               </div>
+
               <button class="ratingscalecancel">
                 <img src="assets/x.png"></img>
               </button>
@@ -299,13 +308,18 @@
 
             <div class="setrating">
               <p>Workload</p>
-              <div class="ratingscale">
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
+
+              <div class="ratingscalecontainer">
+                <p class="ratinglabel"></p>
+                <div class="ratingscale">
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                </div>
               </div>
+
               <button class="ratingscalecancel">
                 <img src="assets/x.png"></img>
               </button>
@@ -313,13 +327,18 @@
 
             <div class="setrating">
               <p>Usefulness</p>
-              <div class="ratingscale">
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
-                <button class="ratingscalebutton"></button>
+
+              <div class="ratingscalecontainer">
+                <p class="ratinglabel"></p>
+                <div class="ratingscale">
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                  <button class="ratingscalebutton"></button>
+                </div>
               </div>
+
               <button class="ratingscalecancel">
                 <img src="assets/x.png"></img>
               </button>
@@ -327,13 +346,18 @@
 
             <div class="setrating" id="apscorerating">
               <p>AP Score</p>
-              <div class="ratingscale">
-                <button class="ratingscalebutton">1</button>
-                <button class="ratingscalebutton">2</button>
-                <button class="ratingscalebutton">3</button>
-                <button class="ratingscalebutton">4</button>
-                <button class="ratingscalebutton">5</button>
+
+              <div class="ratingscalecontainer">
+                <p class="ratinglabel"></p>
+                <div class="ratingscale">
+                  <button class="ratingscalebutton">1</button>
+                  <button class="ratingscalebutton">2</button>
+                  <button class="ratingscalebutton">3</button>
+                  <button class="ratingscalebutton">4</button>
+                  <button class="ratingscalebutton">5</button>
+                </div>
               </div>
+
               <button class="ratingscalecancel">
                 <img src="assets/x.png"></img>
               </button>
@@ -365,6 +389,8 @@
               </button>
               <button onclick="removeopinion()" id="opinioncancel" class="classybutton">Cancel</button>
             </div>
+
+            <p id="opinionfailed" style="opacity: 0">Please wait at least a minute before posting another comment.</p>
           </div>
 
         </div>

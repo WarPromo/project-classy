@@ -15,6 +15,13 @@
 
 }
 
+#opinionfailed{
+  color: red;
+  font-family: var(--font_family);
+  font-size: 20px;
+  transition: opacity 1s;
+}
+
 #opinioninputcontent{
   display: flex;
   flex-direction: column;
@@ -27,6 +34,9 @@
   align-items: center;
   width: 280px;
   justify-content: space-between;
+  height: 65px;
+  opacity: 0.35;
+  transition: opacity 0.1s;
 }
 
 .setrating > p{
@@ -36,11 +46,6 @@
 .ratingscale{
   user-select: none;
   display: flex;
-}
-
-.setrating{
-  opacity: 0.35;
-  transition: opacity 0.1s;
 }
 
 .setrating:hover{
@@ -101,6 +106,20 @@
 
 .ratingscalebutton[value="4"]{
   background: var(--review_4);
+}
+
+.ratingscalecontainer{
+  position: relative;
+}
+
+.ratinglabel{
+  position: absolute;
+  font-family: var(--font_family);
+  left: 50%;
+  transform: translateX(-50%);
+  top: -39px;
+  width: 200px;
+  text-align: center;
 }
 
 #agreementcontainer{

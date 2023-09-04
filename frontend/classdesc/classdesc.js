@@ -27,6 +27,8 @@ function reviewsection(revdata, classy){
 
   type.classList.add("reviewtype");
 
+
+
   container.appendChild(type);
 
 
@@ -36,14 +38,20 @@ function reviewsection(revdata, classy){
   let reviewbar = document.createElement("div");
   reviewbar.classList.add("reviewbar");
 
+  let value = null;
+
   for(var i = 0; i < reviewrange.length; i++){
     if(revdata.rating <= reviewrange[i]){
-      let value = i;
-      if(sorting == "Difficulty" || sorting == "Workload") value = 4 - i;
-      reviewbar.setAttribute("value", i);
+      value = i;
+      if(revdata.type == "Difficulty" || revdata.type == "Workload") value = 4 - i;
+
+      reviewbar.setAttribute("value", value);
       break;
     }
   }
+
+
+
 
   setTimeout(() => {
     reviewbar.style.width = (revdata.rating * 100) + "%";
@@ -51,8 +59,15 @@ function reviewsection(revdata, classy){
 
 
   reviewbarcontainer.appendChild(reviewbar);
-
   container.appendChild(reviewbarcontainer);
+
+  if(revdata.type != "Overall" && ranking != "N/A"){
+      let label = document.createElement("p");
+      label.classList.add("reviewlabel");
+      let labelText = opiniontypes[ratingnames.indexOf(revdata.type)][i];
+      label.innerHTML = '"' + labelText + '"';
+      container.appendChild(label);
+  }
 
   return container;
 

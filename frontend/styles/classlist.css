@@ -64,13 +64,14 @@
 }
 
 .classdescription {
-  margin-left: 20px;
   margin-right: 40px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-bottom: 0px;
+  margin-left: 20px;
 }
 
 
@@ -132,6 +133,9 @@
 .classratingcontainer {
   justify-content: left;
   align-items: center;
+  display: flex;
+  height: 60px;
+  margin-top: 20px;
 }
 
 .classratingcontainerinvalid {
@@ -140,8 +144,9 @@
 
 .classrating {
   font-weight: 600;
-  margin-left: 20px;
   display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .classreviewcontainer {
@@ -152,7 +157,22 @@
   border-radius: 9999px;
   display: inline-block;
   margin-top: -10px;
-  width: 60%;
+  width: 50%;
+  transform: translateY(50%);
+}
+
+.classreviewlabel{
+  font-style: italic;
+  opacity: 0.7;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.classlabelcontainer{
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .classreviewinside {

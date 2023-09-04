@@ -16,12 +16,18 @@ socket.on("classes", (classlist) => {
 })
 
 socket.on("opinionuploaded", (comment) => {
-  opinionuploaded = true;
 
-  console.log(comment);
-  commentsection(comment, true);
 
-  socket.emit("getclasses");
+  if(comment == "failed"){
+    opinionuploaded = "failed";
+  }
+  else{
+    opinionuploaded = true;
+    console.log(comment);
+    commentsection(comment, true);
+    socket.emit("getclasses");
+  }
+
 })
 
 socket.on("comments", commentsreceived);

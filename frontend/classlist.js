@@ -39,11 +39,14 @@ function makeclassbutton(classy, sorting) {
     rank = "N/A";
   }
 
+  let labelContainer = document.createElement("div");
+  labelContainer.classList.add("classlabelcontainer");
+
   let ranktext = document.createElement("p");
   ranktext.innerHTML = rank + " " + sorting;
   ranktext.classList.add("classrating");
 
-  ratingcontainer.appendChild(ranktext);
+  labelContainer.appendChild(ranktext);
 
   let classreviewcontainer = document.createElement("div");
   classreviewcontainer.classList.add("classreviewcontainer");
@@ -61,10 +64,20 @@ function makeclassbutton(classy, sorting) {
       let value = i;
       if (sorting == "Difficulty" || sorting == "Workload") value = 4 - i;
       classreview.setAttribute("value", value);
+
+      if(sorting != "Overall" && rank != "N/A"){
+          let label = document.createElement("p");
+          label.classList.add("classreviewlabel");
+          let labelText = opiniontypes[ratingnames.indexOf(sorting)][i];
+          label.innerHTML = '"' + labelText + '"';
+          labelContainer.appendChild(label)
+      }
+
       break;
     }
   }
 
+  ratingcontainer.appendChild(labelContainer);
   classreviewcontainer.appendChild(classreview);
   ratingcontainer.appendChild(classreviewcontainer);
   classcontainer.appendChild(ratingcontainer);

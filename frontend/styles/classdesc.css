@@ -95,10 +95,23 @@
 
 .reviewtype {
   font-family: var(--font_family);
-  margin-bottom: 10px;
+  margin-bottom: 7px;
   font-size: 18px;
   font-weight: 300;
 }
+
+.reviewlabel{
+  margin-top: 8px;
+  margin-bottom: 7px;
+  font-family: var(--font_family);
+  font-size: 18px;
+  font-weight: 300;
+  opacity: 0.5;
+  font-style: italic;
+  width: 90%;
+  text-align: center;
+}
+
 
 .reviewbarbackground {
   width: 90%;

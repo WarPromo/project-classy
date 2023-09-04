@@ -10,14 +10,13 @@ function commentsection(commentdata, prepend = false){
 
   let author = document.createElement("div");
   author.classList.add("usercommentauthor");
-  author.innerHTML = "By " + commentdata.author;
+  author.textContent = "By " + commentdata.author + " • " + (new Date(commentdata.date).toLocaleDateString());
 
   contentcontainer.appendChild(author);
 
-
   let content = document.createElement("div");
   content.classList.add("usercommentcontent");
-  content.innerHTML = commentdata.content;
+  content.textContent = commentdata.content;
 
   contentcontainer.appendChild(content);
 
