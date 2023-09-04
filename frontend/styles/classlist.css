@@ -146,7 +146,7 @@
   height: 100%;
   border-radius: 9999px;
   width: 0%;
-  transition: width 2s;
+  transition: width 0.5s;
 }
 
 .classreviewinside[value="0"] {
