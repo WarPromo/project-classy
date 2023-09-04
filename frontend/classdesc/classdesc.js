@@ -41,7 +41,7 @@ function reviewsection(revdata, classy) {
   let value = null;
 
   for (var i = 0; i < reviewrange.length; i++) {
-    if (revdata.rating <= reviewrange[i]) {
+    if (revdata.rating <= reviewrange[i] + 0.01) {
       value = i;
       if (revdata.type == "Difficulty" || revdata.type == "Workload") value = 4 - i;
 
