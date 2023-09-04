@@ -14,13 +14,12 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <script src="https://kit.fontawesome.com/288d883b8d.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="styles/button.css">
-
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="styles/classdesc.css">
   <link rel="stylesheet" href="styles/classlist.css">
   <link rel="stylesheet" href="styles/comment.css">
   <link rel="stylesheet" href="styles/opinion.css">
+  <link rel="stylesheet" href="styles/button.css">
   <link rel="stylesheet" href="styles/navbar.css">
 
 
@@ -47,17 +46,9 @@
       <div id="navbar_main">
         <h2 class="navbar_title">Classy</h2>
         <img src="assets/classyLogoShort.png" class="navbar_logo" />
-
       </div>
 
-      <div id="searchbar" oninput="searchclassinput(event)">
-        <div class="search-box shadow-md">
-          <input class="search-input" type="text" autocomplete="off" required minlength="0" placeholder="Search...">
-          <button class="search-btn" type="submit">
-            <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-          </button>
-        </div>
-      </div>
+
     </div>
 
 
@@ -219,14 +210,23 @@
 
       </div>
 
+      <div id="middlenavbar">
+        <div id="searchbar" oninput="searchclassinput(event)">
+          <div class="search-box shadow-md">
+            <input class="search-input" type="text" autocomplete="off" required minlength="0" placeholder="Search...">
+            <button class="search-btn" type="submit">
+              <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div id="classesgui">
         <div id="classes">
 
 
         </div>
-
         <img src="./assets/loading.gif" id="classesloading"></img>
-
       </div>
     </div>
 
@@ -235,7 +235,6 @@
   <div id="classdesccontainer" style="display: none" onclick="hideclassdesc(event)">
 
     <div id="classdesc">
-
       <button class="classybutton" id="classdescclose" onclick="hideclassdesc(event, true)">Close</button>
 
       <p id="classdescname">Class name</p>

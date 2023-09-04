@@ -2,11 +2,9 @@
 
 let sortingmetric = "Overall";
 let ratings = ["Overall", "Enjoyment", "Difficulty", "Work", "Useful"];
-let reviewrange = [0.2,0.4,0.6,0.8,1]
+let reviewrange = [0.2, 0.4, 0.6, 0.8, 1]
 
-
-
-function makeclassbutton(classy, sorting){
+function makeclassbutton(classy, sorting) {
 
   let allclasses = document.getElementById("classes");
 
@@ -15,6 +13,7 @@ function makeclassbutton(classy, sorting){
   let classcontainer = document.createElement("button");
 
   classcontainer.classList.add("classcontainer");
+  classcontainer.classList.add("shadow-md")
 
   let classname = document.createElement("p");
 
@@ -35,7 +34,7 @@ function makeclassbutton(classy, sorting){
 
   let rank = "<b>#" + (metrics[sorting].indexOf(classy) + 1) + "</b>";
 
-  if(classy.rating[sorting] == 0){
+  if (classy.rating[sorting] == 0) {
     ratingcontainer.classList.add("classratingcontainerinvalid")
     rank = "N/A";
   }
@@ -53,14 +52,14 @@ function makeclassbutton(classy, sorting){
   classreview.classList.add("classreviewinside")
 
   setTimeout(() => {
-    classreview.style.width = (classy.rating[sorting]*100) +"%";
+    classreview.style.width = (classy.rating[sorting] * 100) + "%";
   })
 
 
-  for(var i = 0; i < reviewrange.length; i++){
-    if(classy.rating[sorting] <= reviewrange[i]){
+  for (var i = 0; i < reviewrange.length; i++) {
+    if (classy.rating[sorting] <= reviewrange[i]) {
       let value = i;
-      if(sorting == "Difficulty" || sorting == "Work") value = 4 - i;
+      if (sorting == "Difficulty" || sorting == "Work") value = 4 - i;
       classreview.setAttribute("value", value);
       break;
     }
@@ -70,27 +69,32 @@ function makeclassbutton(classy, sorting){
   ratingcontainer.appendChild(classreviewcontainer);
   classcontainer.appendChild(ratingcontainer);
 
+  let classbottombarcontainer = document.createElement("div");
+  classbottombarcontainer.classList.add("classbottombarcontainer");
+
   let classtagscontainer = document.createElement("div");
   classtagscontainer.classList.add("classtagscontainer");
-
-  for(var i = 0; i < classy.tags.length; i++){
+  
+  for (var i = 0; i < classy.tags.length; i++) {
 
     let classtag = document.createElement("p");
-    classtag.classList.add("classtag");
+    classtag.classList.add("classtag", "shadow-md");
+    classtag.classList.add(classy.tags[i].toLowerCase())
     classtag.innerHTML = classy.tags[i];
     classtag.setAttribute("value", classy.tags[i]);
     classtagscontainer.appendChild(classtag)
 
   }
 
-  classcontainer.appendChild(classtagscontainer);
-
+  classbottombarcontainer.appendChild(classtagscontainer);
+  
   let classviewcomments = document.createElement("button");
   classviewcomments.classList.add("classviewcomments");
-  classviewcomments.classList.add("classybutton");
-  classviewcomments.innerHTML = "View Comments";
-
-  classcontainer.appendChild(classviewcomments);
+  classviewcomments.classList.add("classviewbutton");
+  classviewcomments.innerHTML = "View";
+  
+  classbottombarcontainer.appendChild(classviewcomments);
+  classcontainer.appendChild(classbottombarcontainer);
 
   classcontainer.onclick = () => {
 
@@ -118,7 +122,7 @@ function makeclassbutton(classy, sorting){
 
     classreviews.innerHTML = "";
 
-    for(var i = 0; i < keys.length; i++){
+    for (var i = 0; i < keys.length; i++) {
 
       let review = reviewsection({
 
@@ -151,30 +155,30 @@ let metrics = {
 
 };
 
-function makesortedlist(classlist){
+function makesortedlist(classlist) {
 
   let keys = ratings;
 
-  for(var i = 0; i < classlist.length; i++){
+  for (var i = 0; i < classlist.length; i++) {
 
     let a = classlist[i];
     let sum = 0;
     let sumlength = 0;
 
-    for(var j = 0; j < keys.length; j++){
+    for (var j = 0; j < keys.length; j++) {
 
-      if(a.rating[keys[j]] > 0){
+      if (a.rating[keys[j]] > 0) {
         sumlength++;
       }
 
     }
 
     sum = a.rating["Enjoyment"];
-    if(a.rating["Difficulty"] > 0) sum += (1 - a.rating["Difficulty"])
-    if(a.rating["Work"] > 0) sum += (1 - a.rating["Work"])
+    if (a.rating["Difficulty"] > 0) sum += (1 - a.rating["Difficulty"])
+    if (a.rating["Work"] > 0) sum += (1 - a.rating["Work"])
     sum += a.rating["Useful"]
 
-    if(sum > 0){
+    if (sum > 0) {
       sum /= sumlength;
     }
     a.rating["Overall"] = sum
@@ -182,13 +186,13 @@ function makesortedlist(classlist){
   }
 
 
-  for(var i = 0; i < keys.length; i++){
+  for (var i = 0; i < keys.length; i++) {
 
     metrics[keys[i]] = [...classlist];
 
     let num = i;
 
-    metrics[keys[i]].sort((a,b) => {
+    metrics[keys[i]].sort((a, b) => {
 
 
 
@@ -207,20 +211,20 @@ let searchstring = "";
 
 let classtags = [];
 
-function classlistinit(){
+function classlistinit() {
 
   initclasstags()
 
 }
 
 
-function initclasstags(){
+function initclasstags() {
 
   let tagbuttons = document.getElementsByClassName("tagbutton");
 
-  for(var i = 0; i < tagbuttons.length; i++){
+  for (var i = 0; i < tagbuttons.length; i++) {
 
-    if(tagbuttons[i].checked){
+    if (tagbuttons[i].checked) {
 
       classtags.push(tagbuttons[i].value);
 
@@ -230,9 +234,9 @@ function initclasstags(){
 
   let sortings = document.getElementsByClassName("sortingbutton");
 
-  for(var i = 0; i < sortings.length; i++){
+  for (var i = 0; i < sortings.length; i++) {
 
-    if(sortings[i].checked){
+    if (sortings[i].checked) {
       sortingmetric = sortings[i].value;
     }
 
@@ -243,18 +247,18 @@ function initclasstags(){
 
 }
 
-function classsettag(event){
+function classsettag(event) {
 
   console.log(event.target.checked);
 
-  if(event.target.checked){
+  if (event.target.checked) {
     classtags.push(event.target.value);
   }
-  else{
+  else {
 
     let newarr = [];
-    for(var i =0 ; i < classtags.length; i++){
-      if(classtags[i] != event.target.value){
+    for (var i = 0; i < classtags.length; i++) {
+      if (classtags[i] != event.target.value) {
 
         console.log(classtags[i]);
 
@@ -272,7 +276,7 @@ function classsettag(event){
 
 }
 
-function changesorting(event){
+function changesorting(event) {
 
   console.log(event.target, event.target.value);
 
@@ -284,14 +288,14 @@ function changesorting(event){
 
 }
 
-function searchclassinput(event){
+function searchclassinput(event) {
 
   searchstring = event.target.value;
   makeclasslist(sortingmetric);
 
 }
 
-function makeclasslist(){
+function makeclasslist() {
 
 
   let allclasses = document.getElementById("classes");
@@ -303,19 +307,19 @@ function makeclasslist(){
   allclasses.innerHTML = "";
 
 
-  L: for(var i = 0; i < metrics[sortingmetric].length; i++){
+  L: for (var i = 0; i < metrics[sortingmetric].length; i++) {
 
-    if(searchstring != "" && metrics[sortingmetric][i].name.toLowerCase().includes(searchstring.toLowerCase()) == false) continue;
+    if (searchstring != "" && metrics[sortingmetric][i].name.toLowerCase().includes(searchstring.toLowerCase()) == false) continue;
 
-    if(classtags.length == 0) break;
+    if (classtags.length == 0) break;
 
-    for(var j = 0; j < classtags.length; j++){
+    for (var j = 0; j < classtags.length; j++) {
 
-      if(metrics[sortingmetric][i].tags.indexOf(classtags[j]) != -1){
+      if (metrics[sortingmetric][i].tags.indexOf(classtags[j]) != -1) {
         break;
       }
 
-      if(j == classtags.length - 1) continue L;
+      if (j == classtags.length - 1) continue L;
 
     }
 
@@ -323,7 +327,7 @@ function makeclasslist(){
     let button = makeclassbutton(metrics[sortingmetric][i], sortingmetric)
     classbuttons.push(button);
 
-    allclasses.appendChild( button );
+    allclasses.appendChild(button);
 
   }
 

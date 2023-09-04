@@ -1,20 +1,24 @@
-
-#classdesccontainer{
+#classdesccontainer {
   width: 100%;
   height: 100%;
-  position: fixed;;
+  position: fixed;
   top: 0px;
   left: 0px;
   backdrop-filter: blur(10px);
   z-index: 2;
 }
 
-#classdescclose{
-  width: 150px;
-  text-align: center;
+#classdescclose {
+  border: 2px solid var(--button_border);
+  font-family: var(--font_family);
+  background-color: white;
+  border-radius: 9999px;
+  padding: 5px 10px;
+  font-weight: 600;
+  color: var(--button_border);
 }
 
-#classdescname{
+#classdescname {
   font-size: 35px;
   margin-bottom: 0px;
   font-family: var(--font_family);
@@ -22,11 +26,18 @@
   font-weight: bold;
 }
 
-#classreviews{
+#classreviews {
   margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-gap: 4%;
 }
 
-#classdesc{
+.classratingoverall {
+  width: 220%;
+}
+
+#classdesc {
 
   width: 700px;
   height: 85%;
@@ -47,31 +58,32 @@
 
 }
 
-#classdescdesc{
-  font-size: 17px;
+#classdescdesc {
+  font-size: 1rem;
   font-family: var(--font_family);
+  font-weight: 300;
 }
 
 @media only screen and (max-width: 850px) {
 
-  #classdesc{
+  #classdesc {
     width: 80%;
   }
 
-  #usercommentscontainer{
+  #usercommentscontainer {
     align-items: center;
   }
 
-  .usercommentcontentcontainer{
+  .usercommentcontentcontainer {
     width: 100% !important;
   }
 
-  .usercomment{
+  .usercomment {
     flex-direction: column;
     width: 100% !important;
   }
 
-  #opinioninputcontent{
+  #opinioninputcontent {
     width: 100% !important;
   }
 
@@ -81,44 +93,47 @@
 
 
 
-.reviewcontainer{
-  margin-bottom: 25px;
+.reviewcontainer {
+  margin-bottom: 5px;
 }
 
-.reviewtype{
+.reviewtype {
   font-family: var(--font_family);
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 300;
 }
 
-.reviewbarbackground{
-  width: 60%;
-  height: 20px;
-  background: gray;
+.reviewbarbackground {
+  width: 90%;
+  height: 15px;
+  background: lightgray;
+  border-radius: 9999px;
 }
 
-.reviewbar{
+.reviewbar {
   height: 100%;
   width: 0%;
+  border-radius: 9999px;
   transition: width 2s;
 }
 
-.reviewbar[value="0"]{
+.reviewbar[value="0"] {
   background: var(--review_0);
 }
 
-.reviewbar[value="1"]{
+.reviewbar[value="1"] {
   background: var(--review_1);
 }
 
-.reviewbar[value="2"]{
+.reviewbar[value="2"] {
   background: var(--review_2);
 }
 
-.reviewbar[value="3"]{
+.reviewbar[value="3"] {
   background: var(--review_3);
 }
 
-.reviewbar[value="4"]{
+.reviewbar[value="4"] {
   background: var(--review_4);
 }

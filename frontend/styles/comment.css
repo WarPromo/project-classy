@@ -9,6 +9,7 @@
 .usercommentratings{
   display: flex;
   flex-direction: column;
+  width: 200px;
   border-top: solid 2px black;
 }
 
@@ -18,17 +19,15 @@
   align-items: center;
   border-bottom: solid 2px black;
   border-left: solid 2px black;
-  border-right: solid 2px black;
   background: rgba(0,0,0,0.1);
   position: relative;
 }
 
 .userreview{
-  width: 100px;
+  width: 75px;
   height: 20px;
   background: gray;
   margin-right: 10px;
-  margin-left: 15px;
 }
 
 .userreviewtype{
@@ -40,27 +39,7 @@
 .userreviewbar{
   width: 50%;
   height: 100%;
-}
-
-
-.userreviewbar[value="0"]{
-  background: var(--review_0);
-}
-
-.userreviewbar[value="1"]{
-  background: var(--review_1);
-}
-
-.userreviewbar[value="2"]{
-  background: var(--review_2);
-}
-
-.userreviewbar[value="3"]{
-  background: var(--review_3);
-}
-
-.userreviewbar[value="4"]{
-  background: var(--review_4);
+  background: green;
 }
 
 .userreviewapscore{
@@ -78,7 +57,6 @@
   border: solid 2px black;
   width: 425px;
   padding-bottom: 25px;
-  word-break: break-word;
 
 }
 
@@ -106,8 +84,8 @@
 
 
 #usercommentscontainer{
-  display: flex;
-  flex-direction: column;
+
+
 }
 
 #usercomments{

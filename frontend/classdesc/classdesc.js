@@ -19,6 +19,11 @@ function reviewsection(revdata, classy){
   let type = document.createElement("p");
 
   type.innerHTML = ranking + " in " + revdata.type;
+  if (revdata.type == "Overall") {
+    type.innerHTML = ranking + " Overall";
+    container.classList.add("classratingoverall")
+  }
+
 
   type.classList.add("reviewtype");
 

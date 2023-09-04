@@ -1,10 +1,11 @@
 .classybutton{
-  all: unset;
-  background: rgba(0,0,0,0.2);
-  opacity: 0.8;
-  padding: 14px;
-  font-size: 17px;
-  font-family: var(--font_family)
+  border: 2px solid var(--button_border);
+  font-family: var(--font_family);
+  background-color: white;
+  border-radius: 9999px;
+  padding: 5px 10px;
+  font-weight: 600;
+  color: var(--button_border);
 }
 
 .classybutton:disabled{

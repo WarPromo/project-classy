@@ -5,7 +5,7 @@ body {
   margin-left: 0px;
 }
 
-html{
+html {
   height: 100%;
 }
 
@@ -23,7 +23,6 @@ html{
   background: gray;
   z-index: 1;
   background: transparent;
-  /* border: solid 3px var(--button_border); */
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -33,78 +32,92 @@ html{
 
 #leftnavbar {
   background: transparent;
-  /* border: solid 3px var(--button_border); */
   font-family: var(--font_family);
-  /*height: 200px;*/
+  /* height: 200px; */
   border-radius: 10px;
   width: 100%;
-  margin-top: -20px;
-  margin-bottom: 40px;
+  margin-top: -40px;
+  margin-bottom: 30px;
+}
+
+#middlenavbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 #classesgui {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  width: 1000px;
-  margin-left: -5px;
-  /* max-width: 800px; */
+  justify-content: center;
+  width: 70%;
   overflow-x: hidden;
   margin-bottom: 20px;
   align-items: center;
 }
 
-#classes{
+#classes {
   scrollbar-width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 47%);
+  margin-left: -5px;
+  column-gap: 2.25%;
+  row-gap: 20px;
   justify-content: center;
-  column-gap: 2rem;
   width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 @media only screen and (max-width: 1050px) {
 
-  #classes{
+  #classes {
     width: 95%;
     grid-template-columns: none;
   }
 
-  #classesgui{
+  #classesgui {
     margin-left: 0px;
     width: 95%;
   }
 
-  .sortinggui{
+  .sortinggui {
     display: flex;
     flex-direction: column;
   }
 
-  .sbar, .cbar{
+  .sbar,
+  .cbar {
     border: none !important;
     padding: 0px !important;
   }
 
-
 }
 
-@media only screen and (max-width: 525px){
+@media only screen and (max-width: 525px) {
 
 
-  .checkbox-tile{
+  .checkbox-tile {
     width: 4rem !important;
     min-height: 4rem !important;
   }
 
-  .classoptions{
-    grid-template-columns: repeat(5,3.8rem) !important
+  .classoptions {
+    grid-template-columns: repeat(5, 3.8rem) !important
   }
 
-  .checkbox-label{
+  .checkbox-label {
     font-size: 11px !important;
   }
 
+  .navbar_logo {
+    margin-bottom: 80px !important;
+  }
+
+
 }
+
 
 #subgui {
   display: flex;
@@ -151,12 +164,12 @@ html{
 
 .sbar {
   border-right: gray solid 1px;
-  padding-right: 2rem;
+  padding: 0 2rem;
 }
 
 .cbar {
   border-left: gray solid 1px;
-  padding-left: 2rem;
+  padding: 0 2rem;
 }
 
 .sortingborder {
@@ -169,7 +182,7 @@ html{
 
 
 #searchbar {
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
   width: 90%;
   max-width: 750px;
 }
@@ -178,7 +191,9 @@ html{
 #classesloading {
   width: 150px;
   height: 150px;
+  display: flex;
   margin-top: 100px;
+
 }
 
 
@@ -194,11 +209,11 @@ html{
 }
 
 .navbar_logo {
-  width: 7rem;
+  width: 9rem;
   display: flex;
   justify-content: center;
-  margin-left: 0.6rem;
-  margin-bottom: 40px;
+  margin-left: 0.5rem;
+  margin-bottom: 30px;
   margin-top: 5px;
 }
 
@@ -207,8 +222,8 @@ html{
   font-family: var(--font_family);
   padding: 0;
   margin-bottom: 0;
-  font-size: 2.5rem;
-  line-height: 3rem;
+  font-size: 3rem;
+  line-height: 3.5rem;
   color: black;
   /* background: -webkit-linear-gradient(var(--button_border), var(--button_shadow));
   -webkit-background-clip: text;
@@ -263,9 +278,6 @@ html{
   background-color: transparent;
 }
 
-.search-input {
-  caret-color: transparent;
-}
 
 
 .shadow {

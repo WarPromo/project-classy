@@ -6,11 +6,11 @@
   --button_border: rgba(59,130,246); /* 3b82f6 */
   --button_background: rgba(245, 245, 245);
   --font_family: "Manrope";
-  --review_0: rgb(255,0,0);
+  --review_0: rgb(235, 86, 86);
   --review_1: rgb(255,99,71);
-  --review_2: rgb(255,127,80);
-  --review_3: rgb(255,215,0);
-  --review_4: rgb(0,255,0);
+  --review_2: rgb(255, 129, 83);
+  --review_3: rgb(245, 225, 113);
+  --review_4: rgb(84, 194, 84);
 }
 
 body {

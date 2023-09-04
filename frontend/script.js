@@ -13,9 +13,6 @@ socket.on("classes", (classlist) => {
   makesortedlist(classlist);
   makeclasslist(sortingmetric)
 
-
-
-
 })
 
 socket.on("opinionuploaded", (comment) => {
