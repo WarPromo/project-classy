@@ -8,8 +8,12 @@ socket.on("classes", (classlist) => {
 
   console.log(classlist);
 
+  document.getElementById("classesloading").style.opacity = 0;
+
   makesortedlist(classlist);
   makeclasslist(sortingmetric)
+
+
 
 
 })

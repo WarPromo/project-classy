@@ -9,6 +9,11 @@
   z-index: 2;
 }
 
+#classdescclose{
+  width: 150px;
+  text-align: center;
+}
+
 #classdescname{
   font-size: 35px;
   margin-bottom: 0px;
@@ -24,7 +29,7 @@
 #classdesc{
 
   width: 700px;
-  height: 800px;
+  height: 85%;
   background: var(--button_background);
   border: solid 3px var(--button_border);
   position: absolute;
@@ -34,7 +39,7 @@
   margin-right: auto;
   top: 50%;
   transform: translateY(-50%);
-  border-radius: 30px;
+  border-bottom-left-radius: 30px;
   padding: 30px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -46,6 +51,33 @@
   font-size: 17px;
   font-family: var(--font_family);
 }
+
+@media only screen and (max-width: 850px) {
+
+  #classdesc{
+    width: 80%;
+  }
+
+  #usercommentscontainer{
+    align-items: center;
+  }
+
+  .usercommentcontentcontainer{
+    width: 100% !important;
+  }
+
+  .usercomment{
+    flex-direction: column;
+    width: 100% !important;
+  }
+
+  #opinioninputcontent{
+    width: 100% !important;
+  }
+
+
+}
+
 
 
 
@@ -60,12 +92,33 @@
 }
 
 .reviewbarbackground{
-  width: 300px;
+  width: 60%;
   height: 20px;
   background: gray;
 }
 
 .reviewbar{
   height: 100%;
-  background: green;
+  width: 0%;
+  transition: width 2s;
+}
+
+.reviewbar[value="0"]{
+  background: var(--review_0);
+}
+
+.reviewbar[value="1"]{
+  background: var(--review_1);
+}
+
+.reviewbar[value="2"]{
+  background: var(--review_2);
+}
+
+.reviewbar[value="3"]{
+  background: var(--review_3);
+}
+
+.reviewbar[value="4"]{
+  background: var(--review_4);
 }

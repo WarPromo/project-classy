@@ -14,27 +14,42 @@
   transition: all 0.2s;
   margin-left: auto;
   font-family: var(--font_family);
-  padding-bottom: 20px;
   padding-top: 20px;
+  opacity: 0.7;
+  padding-bottom: 70px;
 
 }
 
 .classcontainer:hover{
   cursor: pointer;
+  opacity: 1;
 }
 
 .classcontainer:active{
 
 }
 
+.classviewcomments{
+  position: absolute;
+  right: 20px;
+  bottom: 17px;
+}
+
 .classtagscontainer{
   display: flex;
-  margin-left: 10px;
+  left: 10px;
+  bottom: 17px;
+  position: absolute;
 }
 
 .classdescription{
   margin-left: 20px;
-  margin-right: 25px;
+  margin-right: 40px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .classtag{
@@ -44,22 +59,10 @@
   background: gray;
 }
 
-#classes{
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scrollbar-width: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 47%);
-  justify-content: center;
-  column-gap: 2rem;
-  width: 100%;
-  height: 400px;
-}
-
-
 .classname{
   font-size: 30px;
   margin-left: 20px;
+  margin-right: 20px;
   margin-top: 10px;
   font-family: var(--font_family);
   font-weight: bold;
@@ -90,6 +93,27 @@
 }
 
 .classreviewinside{
-  background: green;
   height: 100%;
+  width: 0%;
+  transition: width 2s;
+}
+
+.classreviewinside[value="0"]{
+  background: var(--review_0);
+}
+
+.classreviewinside[value="1"]{
+  background: var(--review_1);
+}
+
+.classreviewinside[value="2"]{
+  background: var(--review_2);
+}
+
+.classreviewinside[value="3"]{
+  background: var(--review_3);
+}
+
+.classreviewinside[value="4"]{
+  background: var(--review_4);
 }

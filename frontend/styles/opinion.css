@@ -24,7 +24,7 @@
 .setrating{
   display: flex;
   align-items: center;
-  width: 40%;
+  width: 280px;
   justify-content: space-between;
 }
 
@@ -56,11 +56,50 @@
   height: 30px;
   margin: 0px;
   background: blue;
-  transition: background 0.2s;
   text-align: center;
   font-family: var(--font_family);
   font-weight: bold;
   font-size: 20px;
+}
+
+.ratingscalebutton[value="-1"]{
+  background: rgb(40,40,40);
+}
+
+.ratingscalebutton[value="-2"]{
+  background: rgb(55,55,55);
+}
+
+.ratingscalebutton[value="-3"]{
+  background: rgb(70,70,70);
+}
+
+.ratingscalebutton[value="-4"]{
+  background: rgb(85,85,85);
+}
+
+.ratingscalebutton[value="-5"]{
+  background: rgb(100,100,100);
+}
+
+.ratingscalebutton[value="0"]{
+  background: var(--review_0);
+}
+
+.ratingscalebutton[value="1"]{
+  background: var(--review_1);
+}
+
+.ratingscalebutton[value="2"]{
+  background: var(--review_2);
+}
+
+.ratingscalebutton[value="3"]{
+  background: var(--review_3);
+}
+
+.ratingscalebutton[value="4"]{
+  background: var(--review_4);
 }
 
 .ratingscalebutton:hover{

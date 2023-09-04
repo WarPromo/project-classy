@@ -92,20 +92,13 @@ function setratingscales(){
 
   let scales = document.getElementsByClassName("setrating");
 
-  let startcol = [230,230,230];
-  let endcol = [210,210,210];
-
-  let startcol2 = [255,255,0];
-  let endcol2 = [0,255,0];
-
   for(var i = 0; i < scales.length; i++){
 
     lockedin.push(false);
 
     let buttons = scales[i].children[1].children;
 
-    let cols = [];
-    let cols2 = [];
+    let name = scales[i].children[0].innerHTML;
 
     let numi = i;
 
@@ -129,7 +122,7 @@ function setratingscales(){
 
       for(var i = 0; i < buttons.length; i++){
 
-        buttons[i].style.background = `rgba(${cols[i][0]},${cols[i][1]},${cols[i][2]})`
+        buttons[i].setAttribute("value", -i - 1)
 
       }
 
@@ -137,22 +130,7 @@ function setratingscales(){
 
     for(var j = 0; j < buttons.length; j++){
 
-      let am = j / (buttons.length - 1);
-
-      let col = [];
-      let col2 = [];
-
-
-      for(var k = 0; k < startcol.length; k++){
-        col.push(startcol[k] + am * (endcol[k] - startcol[k]));
-        col2.push(startcol2[k] + am * (endcol2[k] - startcol2[k]));
-      }
-
-      cols.push(col);
-      cols2.push(col2);
-
-
-      buttons[j].style.background = `rgba(${col[0]}, ${col[1]}, ${col[2]})`;
+      buttons[j].setAttribute("value", -j - 1);
 
       let num = j;
 
@@ -162,11 +140,13 @@ function setratingscales(){
         if(lockedin[numi] != false) return;
 
         for(var a = 0; a < buttons.length; a++){
-          let col = cols2;
-          if(a > num){
-            col = cols;
-          }
-          buttons[a].style.background = `rgba(${col[a][0]},${col[a][1]},${col[a][2]})`
+          let value = a;
+
+          if(name == "Difficulty" || name == "Work") value = buttons.length - a - 1;
+
+          if(a > num) value = -a - 1;
+
+          buttons[a].setAttribute("value", value);
         }
 
 
@@ -177,14 +157,17 @@ function setratingscales(){
         lockedin[numi] = 0.2 + num / buttons.length;
 
         for(var a = 0; a < buttons.length; a++){
-          let col = cols2;
-          if(a > num){
-            col = cols;
-          }
-          buttons[a].style.background = `rgba(${col[a][0]},${col[a][1]},${col[a][2]})`
+          let value = a;
+
+          if(name == "Difficulty" || name == "Work") value = buttons.length - a - 1;
+
+          if(a > num) value = -a - 1;
+
+          buttons[a].setAttribute("value", value);
         }
 
         scales[numi].classList.add("ratingselected");
+
         scales[numi].children[2].style.display = "";
 
         checkblank();

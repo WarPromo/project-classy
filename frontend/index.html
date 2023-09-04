@@ -14,12 +14,13 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <script src="https://kit.fontawesome.com/288d883b8d.js" crossorigin="anonymous"></script>
 
+  <link rel="stylesheet" href="styles/button.css">
+
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="styles/classdesc.css">
   <link rel="stylesheet" href="styles/classlist.css">
   <link rel="stylesheet" href="styles/comment.css">
   <link rel="stylesheet" href="styles/opinion.css">
-  <link rel="stylesheet" href="styles/button.css">
   <link rel="stylesheet" href="styles/navbar.css">
 
 
@@ -221,9 +222,11 @@
       <div id="classesgui">
         <div id="classes">
 
-          <img src="./assets/loading.gif" id="classesloading"></img>
 
         </div>
+
+        <img src="./assets/loading.gif" id="classesloading"></img>
+
       </div>
     </div>
 
@@ -232,6 +235,8 @@
   <div id="classdesccontainer" style="display: none" onclick="hideclassdesc(event)">
 
     <div id="classdesc">
+
+      <button class="classybutton" id="classdescclose" onclick="hideclassdesc(event, true)">Close</button>
 
       <p id="classdescname">Class name</p>
       <p id="classdescdesc">Class description</p>

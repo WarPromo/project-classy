@@ -2,6 +2,9 @@
 
 let sortingmetric = "Overall";
 let ratings = ["Overall", "Enjoyment", "Difficulty", "Work", "Useful"];
+let reviewrange = [0.2,0.4,0.6,0.8,1]
+
+
 
 function makeclassbutton(classy, sorting){
 
@@ -30,7 +33,7 @@ function makeclassbutton(classy, sorting){
   let ratingcontainer = document.createElement("div")
   ratingcontainer.classList.add("classratingcontainer");
 
-  let rank = "#" + (metrics[sorting].indexOf(classy) + 1);
+  let rank = "<b>#" + (metrics[sorting].indexOf(classy) + 1) + "</b>";
 
   if(classy.rating[sorting] == 0){
     ratingcontainer.classList.add("classratingcontainerinvalid")
@@ -48,7 +51,20 @@ function makeclassbutton(classy, sorting){
 
   let classreview = document.createElement("div");
   classreview.classList.add("classreviewinside")
-  classreview.style.width = (classy.rating[sorting]*100) +"%";
+
+  setTimeout(() => {
+    classreview.style.width = (classy.rating[sorting]*100) +"%";
+  })
+
+
+  for(var i = 0; i < reviewrange.length; i++){
+    if(classy.rating[sorting] <= reviewrange[i]){
+      let value = i;
+      if(sorting == "Difficulty" || sorting == "Work") value = 4 - i;
+      classreview.setAttribute("value", value);
+      break;
+    }
+  }
 
   classreviewcontainer.appendChild(classreview);
   ratingcontainer.appendChild(classreviewcontainer);
@@ -62,11 +78,19 @@ function makeclassbutton(classy, sorting){
     let classtag = document.createElement("p");
     classtag.classList.add("classtag");
     classtag.innerHTML = classy.tags[i];
+    classtag.setAttribute("value", classy.tags[i]);
     classtagscontainer.appendChild(classtag)
 
   }
 
   classcontainer.appendChild(classtagscontainer);
+
+  let classviewcomments = document.createElement("button");
+  classviewcomments.classList.add("classviewcomments");
+  classviewcomments.classList.add("classybutton");
+  classviewcomments.innerHTML = "View Comments";
+
+  classcontainer.appendChild(classviewcomments);
 
   classcontainer.onclick = () => {
 
@@ -131,23 +155,16 @@ function makesortedlist(classlist){
 
   let keys = ratings;
 
-  metrics["Overall"] = [...classlist];
-  metrics["Overall"].sort((a,b) => {
+  for(var i = 0; i < classlist.length; i++){
 
+    let a = classlist[i];
     let sum = 0;
     let sumlength = 0;
 
-    let sum2 = 0;
-    let sum2length = 0;
+    for(var j = 0; j < keys.length; j++){
 
-    for(var i = 0; i < keys.length; i++){
-
-      if(a.rating[keys[i]] > 0){
+      if(a.rating[keys[j]] > 0){
         sumlength++;
-      }
-
-      if(b.rating[keys[i]] > 0){
-        sum2length++;
       }
 
     }
@@ -162,15 +179,8 @@ function makesortedlist(classlist){
     }
     a.rating["Overall"] = sum
 
-    if(sum2 > 0){
-      sum2 /= sum2length;
-    }
-    b.rating["Overall"] = sum2
+  }
 
-
-    return -sum + sum2;
-
-  })
 
   for(var i = 0; i < keys.length; i++){
 

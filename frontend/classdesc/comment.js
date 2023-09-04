@@ -32,6 +32,15 @@ function commentsection(commentdata, prepend = false){
     review.classList.add("userreviewbar");
     review.style.width = (100*ratings[keys[i]]) + "%"
 
+    for(var j = 0; j < reviewrange.length; j++){
+      if(ratings[keys[i]] <= reviewrange[j]){
+        let value = j;
+        if(keys[i] == "Difficulty" || keys[i] == "Work") value = 4 - j;
+        review.setAttribute("value", value);
+        break;
+      }
+    }
+
     reviewcontainer.appendChild(review);
     ratingcontainer.appendChild(reviewcontainer);
 
