@@ -4,7 +4,7 @@ let opiniontypes = [
 
   ["Horrible!", "Boring", "Okay", "Good", "Fun!"],
   ["Easy", "Kinda Easy", "Medium", "Hard", "Very Hard!"],
-  ["Almost no work", "Some work", "Good amount of work", "Lots of work", "Tons of work!"],
+  ["Almost no work", "Some work", "Medium work", "Lots of work", "Tons of work!"],
   ["Useless!", "Barely Useful", "Sometimes Useful", "Useful", "Must Learn!"]
 
 ]

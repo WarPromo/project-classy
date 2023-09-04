@@ -58,7 +58,7 @@ function commentsection(commentdata, prepend = false){
     review.style.width = (100*ratings[keys[i]]) + "%"
 
     for(var j = 0; j < reviewrange.length; j++){
-      if(ratings[keys[i]] <= reviewrange[j]){
+      if(ratings[keys[i]] <= reviewrange[j] + 0.01){
         let value = j;
         if(keys[i] == "Difficulty" || keys[i] == "Workload") value = 4 - j;
         review.setAttribute("value", value);
