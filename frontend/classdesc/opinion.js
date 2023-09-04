@@ -17,6 +17,8 @@ function removeopinion(){
 
   pausecommentloading = false;
 
+  document.getElementById("classdesc").scrollTop = 0;
+
 }
 
 function opinionauthorblur(event){

@@ -111,7 +111,7 @@
   height: 100%;
   width: 0%;
   border-radius: 9999px;
-  transition: width 2s;
+  transition: width 0.5s;
 }
 
 .reviewbar[value="0"] {

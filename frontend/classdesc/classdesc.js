@@ -36,11 +36,6 @@ function reviewsection(revdata, classy){
   let reviewbar = document.createElement("div");
   reviewbar.classList.add("reviewbar");
 
-  setTimeout(() => {
-    reviewbar.style.width = (revdata.rating * 100) + "%";
-  })
-
-
   for(var i = 0; i < reviewrange.length; i++){
     if(revdata.rating <= reviewrange[i]){
       let value = i;
@@ -49,6 +44,11 @@ function reviewsection(revdata, classy){
       break;
     }
   }
+
+  setTimeout(() => {
+    reviewbar.style.width = (revdata.rating * 100) + "%";
+  }, 1)
+
 
   reviewbarcontainer.appendChild(reviewbar);
 

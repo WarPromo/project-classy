@@ -74,7 +74,7 @@ function makeclassbutton(classy, sorting) {
 
   let classtagscontainer = document.createElement("div");
   classtagscontainer.classList.add("classtagscontainer");
-  
+
   for (var i = 0; i < classy.tags.length; i++) {
 
     let classtag = document.createElement("p");
@@ -87,12 +87,12 @@ function makeclassbutton(classy, sorting) {
   }
 
   classbottombarcontainer.appendChild(classtagscontainer);
-  
+
   let classviewcomments = document.createElement("button");
   classviewcomments.classList.add("classviewcomments");
   classviewcomments.classList.add("classviewbutton");
-  classviewcomments.innerHTML = "View";
-  
+  classviewcomments.innerHTML = "View Details";
+
   classbottombarcontainer.appendChild(classviewcomments);
   classcontainer.appendChild(classbottombarcontainer);
 
