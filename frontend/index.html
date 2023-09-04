@@ -257,7 +257,7 @@
           <div id ="opinionagreement">
 
             <p class="inputtitle" id="agreementbox">Agrement</p>
-            
+
 
             <div id="agreementcontainer" onclick="clickagreement(event)">
               <input type="checkbox" id="agreementcheckbox" onclick="checkblank()"></input>
@@ -283,7 +283,7 @@
                   <button class="ratingscalebutton"></button>
                 </div>
 
-                
+
               </div>
 
               <button class="ratingscalecancel ">
@@ -374,9 +374,9 @@
             <p class="inputtitle" id="writeopinion">Write your opinion*</p>
 
             <div id="opinioninputcontent">
-              <input id="opinioninputauthor" type="text" onblur="opinionauthorblur(event)"
+              <input id="opinioninputauthor" type="text" onfocus="opinioninputfocus()" onblur="opinionauthorblur(event); opinioninputblur()"
                 placeholder="Your name" maxlength="32"></input>
-              <textarea id="opinioninputmsg" oninput = "checkblank()" onblur="opinioncommentblur(event)" placeholder="Your opinion" maxlength="1000"></textarea>
+              <textarea id="opinioninputmsg" oninput = "checkblank()" onfocus="opinioninputfocus()" onblur="opinioncommentblur(event); opinioninputblur()" placeholder="Your opinion" maxlength="1000"></textarea>
             </div>
 
           </div>

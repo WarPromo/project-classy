@@ -140,6 +140,22 @@ function checkblank(){
 }
 
 
+function opinioninputfocus(){
+
+  let classdesc = document.getElementById("classdesc");
+  //classdesc.classList.add("noscroll");
+
+
+}
+
+function opinioninputblur(){
+
+  let classdesc = document.getElementById("classdesc");
+  //classdesc.classList.remove("noscroll");
+
+}
+
+
 function setratingscales(){
 
   let scales = document.getElementsByClassName("setrating");
@@ -202,6 +218,8 @@ function setratingscales(){
 
           if(a > num) value = -a - 1;
 
+          if(isapscore && value >= 0) value = buttons.length - 1;
+
           buttons[a].setAttribute("value", value);
         }
 
@@ -225,6 +243,8 @@ function setratingscales(){
           if(name == "Difficulty" || name == "Workload") value = buttons.length - num - 1;
 
           if(a > num) value = -a - 1;
+
+          if(isapscore && value >= 0) value = buttons.length - 1;
 
           buttons[a].setAttribute("value", value);
         }

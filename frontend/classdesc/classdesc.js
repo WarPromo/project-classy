@@ -104,11 +104,11 @@ function hideclassdesc(event, bypass = false) {
 
   classopen = null;
 
-  classdesccontainer.classList.add("fadeOut")
+  classdesccontainer.classList.add("fastFadeOut")
   setTimeout(() => {
-    classdesccontainer.classList.remove("fadeOut")
+    classdesccontainer.classList.remove("fastFadeOut")
     classdesccontainer.style.display = "none";
-  }, 500)
+  }, 250)
 
   document.body.classList.remove("noscroll");
 
