@@ -43,7 +43,7 @@
   font-family: var(--font_family);
   opacity: 0.7;
   position: relative;
-  bottom: 2px;
+  bottom: 1px;
 }
 
 .userreviewbar{
