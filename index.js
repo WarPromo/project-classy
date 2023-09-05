@@ -39,6 +39,7 @@ let ratings = ["Enjoyment", "Difficulty", "Workload", "Usefulness", "APScore"]
 
 let ratelimitTime = 10000;
 let ratelimitBadtime = 600000;
+let writeInterval = 600000;
 
 let ratelimits = new Set();
 let ratelimitsBad = new Set();
@@ -82,9 +83,6 @@ function computeScores(){
     }
 
   }
-
-  fs.writeFileSync("./storage/classlist.json", JSON.stringify(classlist));
-  fs.writeFileSync("./storage/classcomments.json", JSON.stringify(classcomments));
 
 }
 
@@ -272,6 +270,16 @@ async function validComment(comment){
 
 }
 
+setInterval(saveStorage, writeInterval)
+
+function saveStorage(){
+
+  console.log("Saving storage...");
+
+  fs.writeFileSync("./storage/classlist.json", JSON.stringify(classlist));
+  fs.writeFileSync("./storage/classcomments.json", JSON.stringify(classcomments));
+
+}
 
 function generateStorage(){
 
