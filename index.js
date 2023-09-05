@@ -7,10 +7,10 @@ import https from 'https'
 import * as fs from 'fs'
 
 
-let privateKey  = fs.readFileSync('server.key', 'utf8');
-let certificate = fs.readFileSync('server.cer', 'utf8');
+let privateKey  = fs.readFileSync('./server.key', 'utf8');
+let certificate = fs.readFileSync('./server.cer', 'utf8');
 
-console.log(privateKey, certificate);
+//console.log(privateKey, certificate);
 
 let credentials = {key: privateKey, cert: certificate};
 
@@ -44,7 +44,7 @@ let classcomments = JSON.parse(fs.readFileSync("./storage/classcomments.json", "
 
 let ratings = ["Enjoyment", "Difficulty", "Workload", "Usefulness", "APScore"]
 
-let ratelimitTime = 60000;
+let ratelimitTime = 10000;
 let ratelimitBadtime = 600000;
 
 let ratelimits = new Set();
@@ -210,7 +210,7 @@ async function validComment(comment){
 
   let objKeys = Object.keys(comment);
 
-  if(ratelimits.has(comment.ip)) return "Please wait at least a minute before posting another comment";
+  if(ratelimits.has(comment.ip)) return "Please wait at least 10 seconds before posting another comment";
   if(ratelimitsBad.has(comment.ip)) return "You are not allowed to post comments for 10 minutes due to vulgar language."
 
   for(var i = 0; i < objKeys.length; i++){
