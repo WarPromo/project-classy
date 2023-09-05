@@ -1,16 +1,39 @@
 
 import { Server } from 'socket.io'
 
-const io = new Server(3000, {
+import express from 'express'
+
+import * as fs from 'fs'
+
+
+let ioPort = 3000;
+let frontendPort = 8080;
+
+const app = express();
+
+app.use(express.static("./frontend"));
+
+app.listen(frontendPort, () => console.log("listening"));
+
+const io = new Server(ioPort, {
   cors:{
     origin: "*"//["http://localhost:8080"],
   }
 });
 
-import * as fs from 'fs'
+
+
+
+
+
+
+
+
 
 import { ProfanityEngine } from '@coffeeandfun/google-profanity-words';
+
 const profanity = new ProfanityEngine({ language: 'en' });
+
 
 let classlist = JSON.parse(fs.readFileSync("./storage/classlist.json", "utf8"));
 let classcomments = JSON.parse(fs.readFileSync("./storage/classcomments.json", "utf8"));
@@ -23,9 +46,7 @@ let ratelimitBadtime = 600000;
 let ratelimits = new Set();
 let ratelimitsBad = new Set();
 
-
 computeScores();
-
 
 function computeScores(){
 
