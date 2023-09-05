@@ -1,4 +1,3 @@
 node_modules
 *.key
 *.cer
-/storage/devpass.txt
