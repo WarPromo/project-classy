@@ -76,7 +76,11 @@ function reviewsection(revdata, classy) {
 
 }
 
+let showindex = 0;
+
 function showclassdesc() {
+
+  showindex++;
 
   reqindex = null;
 
@@ -86,8 +90,13 @@ function showclassdesc() {
   let commentsloadingcontainer = document.getElementById("commentsloadingcontainer");
   commentsloadingcontainer.style.display = "";
 
+  let num = showindex;
+
   classdesccontainer.classList.add("fastFadeIn")
   setTimeout(() => {
+
+    if(num != showindex) return;
+
     if(classdesccontainer.classList.contains("fastFadeIn")) classdesccontainer.classList.remove("fastFadeIn")
   }, 500)
 
@@ -96,6 +105,8 @@ function showclassdesc() {
 }
 
 function hideclassdesc(event, bypass = false) {
+
+  showindex++;
 
   let classdesccontainer = document.getElementById("classdesccontainer");
 
@@ -109,12 +120,17 @@ function hideclassdesc(event, bypass = false) {
 
   classdescshown = false;
 
+  let num = showindex;
+
   setTimeout(() => {
+
+    if(num != showindex) return;
+
     removeopinion()
     classdesccontainer.classList.remove("fastFadeOut")
     classdesccontainer.style.display = "none";
     document.body.classList.remove("noscroll");
-  }, 150)
+  }, 300)
 
 
 }

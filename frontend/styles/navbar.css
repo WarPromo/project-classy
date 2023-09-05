@@ -347,7 +347,7 @@ html {
 
 .fastFadeOut {
   animation-name: fadeOut;
-  animation-duration: 0.15s;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
 
