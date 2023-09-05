@@ -7,13 +7,13 @@ import https from 'https'
 import * as fs from 'fs'
 
 
+//import .key and .cer files so site can be hosted over https
 let privateKey  = fs.readFileSync('./server.key', 'utf8');
 let certificate = fs.readFileSync('./server.cer', 'utf8');
 
-//console.log(privateKey, certificate);
-
 let credentials = {key: privateKey, cert: certificate};
 
+//change to what you want
 let port = 8080;
 
 const app = express();

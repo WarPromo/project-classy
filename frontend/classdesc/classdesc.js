@@ -88,8 +88,7 @@ function showclassdesc() {
 
   classdesccontainer.classList.add("fastFadeIn")
   setTimeout(() => {
-    classdesccontainer.classList.remove("fastFadeIn")
-    classdesccontainer.style.display = "";
+    if(classdesccontainer.classList.contains("fastFadeIn")) classdesccontainer.classList.remove("fastFadeIn")
   }, 500)
 
   document.body.classList.add("noscroll");
@@ -104,7 +103,12 @@ function hideclassdesc(event, bypass = false) {
 
   classopen = null;
 
+  if(classdesccontainer.classList.contains("fastFadeIn")) classdesccontainer.classList.remove("fastFadeIn")
+
   classdesccontainer.classList.add("fastFadeOut")
+
+  classdescshown = false;
+
   setTimeout(() => {
     removeopinion()
     classdesccontainer.classList.remove("fastFadeOut")
