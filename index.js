@@ -14,7 +14,7 @@ let certificate = fs.readFileSync('./server.cer', 'utf8');
 let credentials = {key: privateKey, cert: certificate};
 
 //change to what you want
-let port = 8080;
+let port = 443;
 
 const app = express();
 
