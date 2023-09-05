@@ -2,25 +2,29 @@
 import { Server } from 'socket.io'
 
 import express from 'express'
+import https from 'https'
 
 import * as fs from 'fs'
 
 
-let ioPort = 3000;
-let frontendPort = 8080;
+let privateKey  = fs.readFileSync('server.key', 'utf8');
+let certificate = fs.readFileSync('server.cer', 'utf8');
+
+console.log(privateKey, certificate);
+
+let credentials = {key: privateKey, cert: certificate};
+
+let port = 8080;
 
 const app = express();
 
 app.use(express.static("./frontend"));
 
-app.listen(frontendPort, () => console.log("listening"));
+var httpsServer = https.createServer(credentials, app);
+httpsServer.listen(port, () => console.log("listening"));
 
-const io = new Server(ioPort, {
-  cors:{
-    origin: "*"//["http://localhost:8080"],
-  }
-});
-
+const io = new Server();
+io.attach(httpsServer);
 
 
 
@@ -98,8 +102,8 @@ io.on("connection", socket => {
     //console.log("Send classes", classlist);
 
     setTimeout(() => {
-        socket.emit("classes", classlist);
-    }, 1000)
+      socket.emit("classes", classlist);
+    }, 500)
 
 
 
