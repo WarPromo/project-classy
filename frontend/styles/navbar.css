@@ -5,6 +5,7 @@ body {
   margin-top: 0px;
   margin-left: 0px;
   width: 100%;
+  scrollbar-gutter: stable;
 }
 
 html {
@@ -346,7 +347,7 @@ html {
 
 .fastFadeOut {
   animation-name: fadeOut;
-  animation-duration: 0.25s;
+  animation-duration: 0.15s;
   animation-fill-mode: forwards;
 }
 
