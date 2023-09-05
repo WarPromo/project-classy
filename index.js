@@ -2,10 +2,9 @@
 import { Server } from 'socket.io'
 
 import express from 'express'
-import http from 'http'
+import https from 'https'
 
 import * as fs from 'fs'
-
 
 //change to what you want
 let port = 443;
@@ -14,11 +13,11 @@ const app = express();
 
 app.use(express.static("./frontend"));
 
-var httpServer = http.createServer(app);
-httpServer.listen(port, () => console.log("listening"));
+var httpsServer = https.createServer(app);
+httpsServer.listen(port, () => console.log("listening"));
 
 const io = new Server();
-io.attach(httpServer);
+io.attach(httpsServer);
 
 
 
