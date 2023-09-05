@@ -2,25 +2,10 @@
 import { Server } from 'socket.io'
 
 import express from 'express'
-import https from 'https'
+import http from 'http'
 
 import * as fs from 'fs'
 
-
-let privateKey = null;
-let certificate = null;
-
-try{
-  //import .key and .cer files so site can be hosted over https
-  privateKey  = fs.readFileSync('./server.key', 'utf8');
-  certificate = fs.readFileSync('./server.cer', 'utf8');
-}
-catch(err){
-  console.log("Failed to load key / certificate");
-}
-
-
-let credentials = {key: privateKey, cert: certificate};
 
 //change to what you want
 let port = 443;
@@ -29,11 +14,11 @@ const app = express();
 
 app.use(express.static("./frontend"));
 
-var httpsServer = https.createServer(credentials, app);
-httpsServer.listen(port, () => console.log("listening"));
+var httpServer = http.createServer(app);
+httpServer.listen(port, () => console.log("listening"));
 
 const io = new Server();
-io.attach(httpsServer);
+io.attach(httpServer);
 
 
 
