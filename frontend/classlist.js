@@ -60,7 +60,7 @@ function makeclassbutton(classy, sorting) {
 
 
   for (var i = 0; i < reviewrange.length; i++) {
-    if (classy.rating[sorting] <= reviewrange[i]) {
+    if (classy.rating[sorting] <= reviewrange[i] + 0.01) {
       let value = i;
       if (sorting == "Difficulty" || sorting == "Workload") value = 4 - i;
       classreview.setAttribute("value", value);
