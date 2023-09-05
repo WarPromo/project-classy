@@ -7,9 +7,18 @@ import https from 'https'
 import * as fs from 'fs'
 
 
-//import .key and .cer files so site can be hosted over https
-let privateKey  = fs.readFileSync('./server.key', 'utf8');
-let certificate = fs.readFileSync('./server.cer', 'utf8');
+let privateKey = null;
+let certificate = null;
+
+try{
+  //import .key and .cer files so site can be hosted over https
+  privateKey  = fs.readFileSync('./server.key', 'utf8');
+  certificate = fs.readFileSync('./server.cer', 'utf8');
+}
+catch(err){
+  console.log("Failed to load key / certificate");
+}
+
 
 let credentials = {key: privateKey, cert: certificate};
 
