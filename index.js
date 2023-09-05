@@ -2,24 +2,22 @@
 import { Server } from 'socket.io'
 
 import express from 'express'
-import https from 'https'
+import http from 'http'
 
 import * as fs from 'fs'
 
 //change to what you want
-let port = 443;
+let port = 80;
 
 const app = express();
 
 app.use(express.static("./frontend"));
 
-var httpsServer = https.createServer(app);
-httpsServer.listen(port, () => console.log("listening"));
+var httpServer = http.createServer(app);
+httpServer.listen(port, () => console.log("listening"));
 
 const io = new Server();
-io.attach(httpsServer);
-
-
+io.attach(httpServer);
 
 
 //create a dev pass key so you can delete bad comments
