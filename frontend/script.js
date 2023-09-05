@@ -1,6 +1,9 @@
 
 const socket = io();
 
+let devMode = false;
+let devPass = "";
+
 
 socket.emit("getclasses");
 

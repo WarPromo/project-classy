@@ -96,6 +96,23 @@ function commentsection(commentdata, prepend = false){
 
   commentcontainer.appendChild(ratingscontainer);
 
+  if(devMode){
+
+    let deleteButton = document.createElement("button");
+    deleteButton.classList.add("devdeletebutton");
+    commentcontainer.appendChild(deleteButton);
+
+    deleteButton.onclick = () => {
+
+      console.log("REMOVE IT");
+
+      socket.emit("removeopinion", classopen, commentdata, devPass);
+      commentcontainer.remove();
+
+    }
+
+  }
+
   if(!prepend){
     usercommentcontainer.appendChild(commentcontainer);
   }

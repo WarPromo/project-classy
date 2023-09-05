@@ -29,10 +29,8 @@ io.attach(httpsServer);
 
 
 
-
-
-
-
+//create a dev pass key so you can delete bad comments
+let devPass = fs.readFileSync("./storage/devpass.txt", 'utf8');
 
 import { ProfanityEngine } from '@coffeeandfun/google-profanity-words';
 
@@ -77,12 +75,14 @@ function computeScores(){
       }
     }
 
-    let keys = Object.keys(scores);
+    //let keys = Object.keys(scores);
 
 
-    for(var j = 0; j < keys.length; j++){
+    for(var j = 0; j < ratings.length; j++){
 
-      classlist[i].rating[keys[j]] = scores[keys[j]][0] / scores[keys[j]][1];
+      if(ratings[j] == "APScore") continue;
+      if(ratings[j] in scores == false) classlist[i].rating[ratings[j]] = 0;
+      else classlist[i].rating[ratings[j]] = scores[ratings[j]][0] / scores[ratings[j]][1];
 
     }
 
@@ -92,7 +92,6 @@ function computeScores(){
   fs.writeFileSync("./storage/classcomments.json", JSON.stringify(classcomments));
 
 }
-
 
 io.on("connection", socket => {
   console.log("Connection: " + socket.id);
@@ -133,6 +132,30 @@ io.on("connection", socket => {
     //console.log("SEND LENGTH", size);
 
     socket.emit("commentslength", classid, size)
+
+  })
+
+  socket.on("removeopinion", (classid, comment, password) => {
+
+
+    if(password != devPass){
+      return;
+    }
+
+    for(var i = classcomments[classid].length-1; i >= 0; i--){
+
+      let commentI = classcomments[classid][i];
+
+      if(commentI.date == comment.date && commentI.author == comment.author && commentI.content == comment.content){
+        console.log("DELETE", commentI)
+        classcomments[classid].splice(i, 1);
+        computeScores();
+        return;
+      }
+
+
+    }
+
 
   })
 
