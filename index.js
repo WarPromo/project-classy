@@ -37,7 +37,7 @@ let classcomments = JSON.parse(fs.readFileSync("./storage/classcomments.json", "
 
 let ratings = ["Enjoyment", "Difficulty", "Workload", "Usefulness", "APScore"]
 
-let ratelimitTime = 10000;
+let ratelimitTime = 120000;
 let ratelimitBadtime = 600000;
 let writeInterval = 600000;
 
@@ -226,7 +226,7 @@ async function validComment(comment){
 
   let objKeys = Object.keys(comment);
 
-  if(ratelimits.has(comment.ip)) return "Please wait at least 10 seconds before posting another comment";
+  if(ratelimits.has(comment.ip)) return "Please wait at least 2 minutes before posting another comment";
   if(ratelimitsBad.has(comment.ip)) return "You are not allowed to post comments for 10 minutes due to vulgar language."
 
   for(var i = 0; i < objKeys.length; i++){
