@@ -94,14 +94,18 @@ function showclassdesc() {
 
   classdesccontainer.style.pointerEvents = "auto";
 
-
-  classdesccontainer.classList.add("fastFadeIn")
   setTimeout(() => {
+      classdesccontainer.style.opacity = 1;
+  }, 1);
 
-    if(num != showindex) return;
 
-    if(classdesccontainer.classList.contains("fastFadeIn")) classdesccontainer.classList.remove("fastFadeIn")
-  }, 500)
+  //classdesccontainer.classList.add("fastFadeIn")
+  //setTimeout(() => {
+
+    //if(num != showindex) return;
+
+    //if(classdesccontainer.classList.contains("fastFadeIn")) classdesccontainer.classList.remove("fastFadeIn")
+  //}, 500)
 
   document.body.classList.add("noscroll");
 
@@ -119,7 +123,9 @@ function hideclassdesc(event, bypass = false) {
 
   if(classdesccontainer.classList.contains("fastFadeIn")) classdesccontainer.classList.remove("fastFadeIn")
 
-  classdesccontainer.classList.add("fastFadeOut")
+  //classdesccontainer.classList.add("fastFadeOut")
+
+  classdesccontainer.style.opacity = 0;
 
   classdesccontainer.style.pointerEvents = "none";
 
@@ -134,7 +140,7 @@ function hideclassdesc(event, bypass = false) {
     if(num != showindex) return;
 
     removeopinion()
-    classdesccontainer.classList.remove("fastFadeOut")
+    //classdesccontainer.classList.remove("fastFadeOut")
     classdesccontainer.style.display = "none";
 
   }, 300)
