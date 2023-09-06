@@ -92,6 +92,9 @@ function showclassdesc() {
 
   let num = showindex;
 
+  classdesccontainer.style.pointerEvents = "auto";
+
+
   classdesccontainer.classList.add("fastFadeIn")
   setTimeout(() => {
 
@@ -117,6 +120,8 @@ function hideclassdesc(event, bypass = false) {
   if(classdesccontainer.classList.contains("fastFadeIn")) classdesccontainer.classList.remove("fastFadeIn")
 
   classdesccontainer.classList.add("fastFadeOut")
+
+  classdesccontainer.style.pointerEvents = "none";
 
   classdescshown = false;
 
