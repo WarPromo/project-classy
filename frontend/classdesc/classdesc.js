@@ -93,7 +93,7 @@ function showclassdesc() {
   let num = showindex;
 
   classdesccontainer.style.pointerEvents = "auto";
-  classdesccontainer.style.overflowY = "scroll";
+  //classdesccontainer.style.overflowY = "scroll";
 
 
   document.body.classList.add("noscroll");
@@ -130,7 +130,7 @@ function hideclassdesc(event, bypass = false) {
   classdesccontainer.style.opacity = 0;
 
   classdesccontainer.style.pointerEvents = "none";
-  classdesccontainer.style.overflowY = "";
+  //classdesccontainer.style.overflowY = "";
 
 
   classdescshown = false;
