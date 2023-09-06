@@ -122,6 +122,8 @@ function hideclassdesc(event, bypass = false) {
 
   let num = showindex;
 
+  document.body.classList.remove("noscroll");
+
   setTimeout(() => {
 
     if(num != showindex) return;
@@ -129,7 +131,7 @@ function hideclassdesc(event, bypass = false) {
     removeopinion()
     classdesccontainer.classList.remove("fastFadeOut")
     classdesccontainer.style.display = "none";
-    document.body.classList.remove("noscroll");
+
   }, 300)
 
 
