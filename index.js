@@ -1,6 +1,8 @@
 
 import { Server } from 'socket.io'
 
+import cors from 'cors'
+
 import express from 'express'
 import http from 'http'
 
@@ -11,6 +13,8 @@ let port = 80;
 
 const app = express();
 
+
+app.use(cors())
 app.use(express.static("./frontend"));
 
 var httpServer = http.createServer(app);
