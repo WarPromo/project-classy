@@ -13,8 +13,8 @@ let port = 443;
 
 const app = express();
 
-let keypath = "/root/project-classy/live/classybeta.projectempower.io/fullchain.pem"
-let certpath = "/root/project-classy/live/classybeta.projectempower.io/privkey.pem"
+let keypath = "/root/project-classy/live/classybeta.projectempower.io/privkey.pem"
+let certpath = "/root/project-classy/live/classybeta.projectempower.io/fullchain.pem"
 
 var credentials = {key: null, cert: null};
 
