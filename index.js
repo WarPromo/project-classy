@@ -1,23 +1,27 @@
 
 import { Server } from 'socket.io'
 
+import cors from 'cors'
+
 import express from 'express'
-import http from 'http'
+import https from 'https'
 
 import * as fs from 'fs'
 
 //change to what you want
-let port = 80;
+let port = 443;
 
 const app = express();
 
+
+app.use(cors())
 app.use(express.static("./frontend"));
 
-var httpServer = http.createServer(app);
-httpServer.listen(port, () => console.log("listening"));
+var httpsServer = https.createServer(app);
+httpsServer.listen(port, () => console.log("listening"));
 
 const io = new Server();
-io.attach(httpServer);
+io.attach(httpsServer);
 
 
 //create a dev pass key so you can delete bad comments
