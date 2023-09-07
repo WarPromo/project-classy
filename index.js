@@ -13,8 +13,8 @@ let port = 443;
 
 const app = express();
 
-let keypath = "null"
-let certpath = "null"
+let keypath = "/root/project-classy/live/classybeta.projectempower.io/fullchain.pem"
+let certpath = "/root/project-classy/live/classybeta.projectempower.io/privkey.pem"
 
 var credentials = {key: null, cert: null};
 
@@ -24,7 +24,7 @@ try{
 	credentials.cert = fs.readFileSync(certpath);
 	
 }
-catch(err){	}
+catch(err){ console.log("failed to set key/cert")	}
 
 var credentials = {
   key: null,
