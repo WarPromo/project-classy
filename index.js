@@ -13,11 +13,29 @@ let port = 443;
 
 const app = express();
 
+let keypath = "null"
+let certpath = "null"
+
+var credentials = {key: null, cert: null};
+
+try{
+	
+	credentials.key = fs.readFileSync(keypath)
+	credentials.cert = fs.readFileSync(certpath);
+	
+}
+catch(err){	}
+
+var credentials = {
+  key: null,
+  cert: null
+};
+
 
 app.use(cors())
 app.use(express.static("./frontend"));
 
-var httpsServer = https.createServer(app);
+var httpsServer = https.createServer(credentials, app);
 httpsServer.listen(port, () => console.log("listening"));
 
 const io = new Server();
