@@ -26,11 +26,8 @@ try{
 }
 catch(err){ console.log("failed to set key/cert")	}
 
-var credentials = {
-  key: null,
-  cert: null
-};
-
+console.log(credentials.key);
+console.log(credentials.cert);
 
 app.use(cors())
 app.use(express.static("./frontend"));
