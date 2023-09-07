@@ -9,7 +9,7 @@ import https from 'https'
 import * as fs from 'fs'
 
 //change to what you want
-let port = 443;
+let port = 80;
 
 const app = express();
 
