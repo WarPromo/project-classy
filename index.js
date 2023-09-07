@@ -20,8 +20,8 @@ var credentials = {key: null, cert: null};
 
 try{
 	
-	credentials.key = fs.readFileSync(keypath)
-	credentials.cert = fs.readFileSync(certpath);
+	credentials.key = fs.readFileSync(keypath, "utf8")
+	credentials.cert = fs.readFileSync(certpath, "utf8");
 	
 }
 catch(err){ console.log("failed to set key/cert")	}
