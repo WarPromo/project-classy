@@ -246,6 +246,9 @@ html {
   -webkit-text-fill-color: transparent; */
 }
 
+.radio-tile, .checkbox-tile, .navbar_title{
+  user-select: none;
+}
 
 .search-box {
   background: white;
