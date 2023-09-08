@@ -5,6 +5,7 @@ import cors from 'cors'
 
 import express from 'express'
 import https from 'https'
+import http from 'http'
 
 import * as fs from 'fs'
 
@@ -19,10 +20,10 @@ let certpath = "/root/project-classy/live/classybeta.projectempower.io/fullchain
 var credentials = {key: null, cert: null};
 
 try{
-	
+
 	credentials.key = fs.readFileSync(keypath, "utf8")
 	credentials.cert = fs.readFileSync(certpath, "utf8");
-	
+
 }
 catch(err){ console.log("failed to set key/cert")	}
 
@@ -32,7 +33,17 @@ console.log(credentials.cert);
 app.use(cors())
 app.use(express.static("./frontend"));
 
-var httpsServer = https.createServer(credentials, app);
+var httpsServer = null;
+
+if(credentials.key == null || credentials.cert == null){
+	console.log("No credentials, using http");
+	httpsServer = http.createServer(app);
+}
+else{
+	console.log("Set credentials")
+	httpsServer = https.createServer(credentials, app);
+}
+
 httpsServer.listen(port, () => console.log("listening"));
 
 const io = new Server();
