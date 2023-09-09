@@ -78,13 +78,13 @@ function opinioncommentblur(event){
 
 
 let ratetitle = `Rate the course<span style="color:red">*</span>`
-let ratetitlecomplete = `Rate the course`;
+let ratetitlecomplete = `Rate the course <span style="color:lightblue">✓</span>`;
 
 let writeopinion = `Write your opinion<span style="color:red">*</span>`
-let writeopinioncomplete = `Write your opinion`
+let writeopinioncomplete = `Write your opinion <span style="color:lightblue">✓</span>`
 
 let agreement = `Agreement<span style="color:red">*</span>`
-let agreementcomplete = `Agreement`
+let agreementcomplete = `Agreement <span style="color:lightblue">✓</span>`
 
 function clickagreement(event){
 
