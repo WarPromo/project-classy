@@ -56,9 +56,9 @@ if(!fs.existsSync("./storage/devpass.txt")) fs.writeFileSync("./storage/devpass.
 
 let devPass = fs.readFileSync("./storage/devpass.txt", 'utf8');
 
-import { ProfanityEngine } from '@coffeeandfun/google-profanity-words';
+import * as Filter from 'bad-words';
 
-const profanity = new ProfanityEngine({ language: 'en' });
+const customFilter = new Filter.default({ placeHolder: 'aa'});
 
 if(!fs.existsSync("./storage/classlist.json")) generateStorage();
 
@@ -284,17 +284,17 @@ async function validComment(comment){
     }
 
   }
-	/*
+
   if(typeof comment.author != "string") return "Failed";
   if(comment.author.length > 32 || comment.author.length == 0) return "Failed";
-  let profaneAuthor = await profanity.hasCurseWords(comment.author);
+  let profaneAuthor = customFilter.clean(comment.author).length != comment.author.length;
   if(profaneAuthor) return "Profanity detected, you have been banned for 10 minutes."
 
   if(typeof comment.content != "string") return "Failed";
   if(comment.content.length > 1000 || comment.content.length == 0) return "Failed";
-  let profaneContent = await profanity.hasCurseWords(comment.content);
+  let profaneContent = customFilter.clean(comment.content).length != comment.content.length;
   if(profaneContent) return "Profanity detected, you have been banned for 10 minutes."
-	*/
+
 
   return true;
 
