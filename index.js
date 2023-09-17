@@ -284,7 +284,7 @@ async function validComment(comment){
     }
 
   }
-
+	/*
   if(typeof comment.author != "string") return "Failed";
   if(comment.author.length > 32 || comment.author.length == 0) return "Failed";
   let profaneAuthor = await profanity.hasCurseWords(comment.author);
@@ -294,7 +294,7 @@ async function validComment(comment){
   if(comment.content.length > 1000 || comment.content.length == 0) return "Failed";
   let profaneContent = await profanity.hasCurseWords(comment.content);
   if(profaneContent) return "Profanity detected, you have been banned for 10 minutes."
-
+	*/
 
   return true;
 
