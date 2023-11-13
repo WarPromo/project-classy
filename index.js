@@ -288,12 +288,12 @@ async function validComment(comment){
   if(typeof comment.author != "string") return "Failed";
   if(comment.author.length > 32 || comment.author.length == 0) return "Failed";
   let profaneAuthor = customFilter.clean(comment.author).length != comment.author.length;
-  if(profaneAuthor) return "Profanity detected, you have been banned for 10 minutes."
+  if(profaneAuthor || comment.author.includes('techoptimum')) return "Profanity detected, you have been banned for 10 minutes."
 
   if(typeof comment.content != "string") return "Failed";
   if(comment.content.length > 1000 || comment.content.length == 0) return "Failed";
   let profaneContent = customFilter.clean(comment.content).length != comment.content.length;
-  if(profaneContent) return "Profanity detected, you have been banned for 10 minutes."
+  if(profaneContent || comment.content.includes('techoptimum')) return "Profanity detected, you have been banned for 10 minutes."
 
 
   return true;
