@@ -44,7 +44,7 @@ else{
 	httpsServer = https.createServer(credentials, app);
 }
 
-httpsServer.listen(port, () => console.log("listening"));
+httpsServer.listen(port, () => console.log("Listening", port));
 
 const io = new Server();
 io.attach(httpsServer);
@@ -56,9 +56,12 @@ if(!fs.existsSync("./storage/devpass.txt")) fs.writeFileSync("./storage/devpass.
 
 let devPass = fs.readFileSync("./storage/devpass.txt", 'utf8');
 
-import * as Filter from 'bad-words';
+import { RegExpMatcher, TextCensor, englishDataset, englishRecommendedTransformers } from 'obscenity';
 
-const customFilter = new Filter.default({ placeHolder: 'aa'});
+const matcher = new RegExpMatcher({
+	...englishDataset.build(),
+	...englishRecommendedTransformers,
+});
 
 if(!fs.existsSync("./storage/classlist.json")) generateStorage();
 
@@ -68,7 +71,7 @@ let classcomments = JSON.parse(fs.readFileSync("./storage/classcomments.json", "
 let ratings = ["Enjoyment", "Difficulty", "Workload", "Usefulness", "APScore"]
 
 let ratelimitTime = 120000;
-let ratelimitBadtime = 600000;
+//let ratelimitBadtime = 600000;
 let writeInterval = 600000;
 
 let ratelimits = new Set();
@@ -203,11 +206,11 @@ io.on("connection", socket => {
 
         ratelimitsBad.add(comment.ip);
 
-        setTimeout(() => {
-
-          ratelimitsBad.delete(comment.ip)
-
-        }, ratelimitBadtime)
+        //setTimeout(() => {
+				//
+        //  ratelimitsBad.delete(comment.ip)
+				//
+        //}, ratelimitBadtime)
 
       }
 
@@ -257,7 +260,7 @@ async function validComment(comment){
   let objKeys = Object.keys(comment);
 
   if(ratelimits.has(comment.ip)) return "Please wait at least 2 minutes before posting another comment";
-  if(ratelimitsBad.has(comment.ip)) return "You are not allowed to post comments for 10 minutes due to vulgar language."
+  if(ratelimitsBad.has(comment.ip)) return "You are permanently banned due to vulgar language."
 
   for(var i = 0; i < objKeys.length; i++){
 
@@ -287,13 +290,13 @@ async function validComment(comment){
 
   if(typeof comment.author != "string") return "Failed";
   if(comment.author.length > 32 || comment.author.length == 0) return "Failed";
-  let profaneAuthor = customFilter.clean(comment.author).length != comment.author.length;
-  if(profaneAuthor || comment.author.includes('techoptimum')) return "Profanity detected, you have been banned for 10 minutes."
+  let profaneAuthor = matcher.hasMatch(comment.author);
+  if(profaneAuthor || comment.author.includes('techoptimum')) return "Profanity detected, you have been permanently banned."
 
   if(typeof comment.content != "string") return "Failed";
   if(comment.content.length > 1000 || comment.content.length == 0) return "Failed";
-  let profaneContent = customFilter.clean(comment.content).length != comment.content.length;
-  if(profaneContent || comment.content.includes('techoptimum')) return "Profanity detected, you have been banned for 10 minutes."
+  let profaneContent = matcher.hasMatch(comment.content);
+  if(profaneContent || comment.content.includes('techoptimum')) return "Profanity detected, you have been permanently banned."
 
 
   return true;

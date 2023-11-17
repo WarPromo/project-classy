@@ -24,6 +24,11 @@ socket.on("opinionuploaded", (comment) => {
   if("error" in comment){
     opinionuploaded = "failed";
     document.getElementById("opinionfailed").textContent = comment.error;
+
+    if(comment.error.includes("banned")){
+      localStorage.setItem("banned", true);
+    }
+
   }
   else{
     opinionuploaded = true;

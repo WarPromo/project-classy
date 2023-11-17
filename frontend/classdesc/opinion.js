@@ -350,7 +350,18 @@ function submitopinion(me){
 
   cancelbutton.disabled = true;
 
-  socket.emit("opinion", classopen, comment);
+  let permaBanned = localStorage.getItem("banned") || false;
+
+  if(permaBanned){
+    setTimeout(() => {
+      opinionuploaded = "failed";
+      document.getElementById("opinionfailed").textContent = "You are permanently banned due to vulgar language.";
+    }, 1000)
+  }
+  else{
+    socket.emit("opinion", classopen, comment);
+  }
+
 
   let myinterval = setInterval(() => {
 
